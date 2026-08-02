@@ -22,21 +22,27 @@
 // commit) plus targeted web research for a few one-off names.
 //
 // KNOWN LIMITATIONS (as of generation time):
-// - Spirit names (nameJa) are filled in for Season (169), Regular (37),
-//   Elder (6), and 1 of 4 Special spirits -- 183/216 total. Still missing:
-//   30 Guide-type spirits (NPC guides, not tracked by wings since they give
-//   no wings) and 3 "Nesting Challenges" special spirits.
+// - Spirit names (nameJa) are filled in for 213/216 spirits: all Season
+//   (169), Regular (37), Elder (6), all 30 Guide-type NPCs (23 via the
+//   standard "<season> Guide" naming convention, 5 with individually
+//   researched distinctive names, 2 using the season-guide fallback name
+//   since their specific distinctive name -- Vault Elder's Lantern, Vase
+//   with Fifteen Sunflowers -- could not be confirmed via web research),
+//   and 1 of 4 "Special"-type spirits. Still missing: 3 "Nesting
+//   Challenges" special sub-spirits.
 // - Item names (itemName / itemNameJa on each node) are translated for
-//   1,990 / 2,343 node entries (~85%), via: a hand-curated dictionary for
-//   generic reward types (Heart/Blessing/Wing Buff/Quest N/dyes/etc), this
-//   project's own emote repo (for Emote-type rewards), and item repo's
-//   cost-data.js (for wearable Cape/Hair/Mask/Outfit/etc, matched by
-//   spirit name prefix, or by season theme word for Guide-type spirits).
-//   Remaining 353 unresolved (itemNameJa: null) are mostly: unique
-//   instrument names (Harp/Piano/Drum/etc, not spirit-prefixed in item's
-//   catalog), Stance/Call type items (not tracked by item at all), Elder
-//   "Ultimate" reward items (different naming convention), and items
-//   belonging to the 33 spirits whose own nameJa is still unresolved.
+//   2,089 / 2,343 node entries (~89%), via, in order: a hand-curated
+//   dictionary for generic reward types (Heart/Blessing/Wing Buff/Quest N/
+//   dyes/Stance poses/animal Calls/instruments/etc), this project's own
+//   emote repo (for Emote-type rewards), and item repo's cost-data.js (for
+//   wearable Cape/Hair/Mask/Outfit/etc, matched by spirit name prefix, or
+//   by season theme word for Guide-type spirits). NOTE: the ~55 "Music"
+//   type (song/tune title) translations are direct literal translations by
+//   the assistant, NOT cross-referenced against any official or community
+//   source -- treat those specifically as unverified. Remaining 254
+//   unresolved (itemNameJa: null) are mostly Elder "Ultimate" reward items
+//   (not catalogued by item's cost-data.js at all) and items belonging to
+//   the 3 still-unnamed Nesting Challenge spirits.
 // - 45 spirits were skipped (no unlockable tree at all -- mostly seasonal
 //   "Guide" NPCs and internal placeholder/staff entries). See
 //   spirit-trees-skipped.json for the full list with reasons.
@@ -888,7 +894,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "biKOov4qJQ",
                           "itemName":  "Harp",
-                          "itemNameJa":  null
+                          "itemNameJa":  "ハープ"
                       },
                       {
                           "guid":  "EItymn8qgx",
@@ -924,7 +930,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "FGr955bSRr",
                           "itemName":  "Bird Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "鳥の鳴き声"
                       },
                       {
                           "guid":  "Gxi1ZxNEcM",
@@ -978,7 +984,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "EhvbJDQHCw",
                           "itemName":  "Bounding About",
-                          "itemNameJa":  null
+                          "itemNameJa":  "飛び回る"
                       }
                   ],
         "nameJa":  "鳥の語り部"
@@ -1257,7 +1263,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "k1JghrvRyd",
                           "itemName":  "Contrabass",
-                          "itemNameJa":  null
+                          "itemNameJa":  "コントラバス"
                       },
                       {
                           "guid":  "YmBGpYCWdW",
@@ -1419,7 +1425,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "dCMS94p34P",
                           "itemName":  "Courageous Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "勇敢なポーズ"
                       },
                       {
                           "guid":  "83k5UV6qtK",
@@ -1518,7 +1524,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "ztAW0vBZfY",
                           "itemName":  "Sneaky Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "こっそりしたポーズ"
                       },
                       {
                           "guid":  "ZAO5AI4fnU",
@@ -1671,7 +1677,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "0SP9P2WzZ9",
                           "itemName":  "Fireworks Staff",
-                          "itemNameJa":  null
+                          "itemNameJa":  "花火の杖"
                       },
                       {
                           "guid":  "ly8KHx3QI2",
@@ -1797,7 +1803,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Zu6MhpSM7W",
                           "itemName":  "Horn",
-                          "itemNameJa":  null
+                          "itemNameJa":  "ホルン"
                       },
                       {
                           "guid":  "RQ573VDk7I",
@@ -2022,7 +2028,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "HGGTj_QBip",
                           "itemName":  "Drum",
-                          "itemNameJa":  null
+                          "itemNameJa":  "ドラム"
                       },
                       {
                           "guid":  "qY74NM6AV4",
@@ -2661,7 +2667,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "70FpYsoCa7",
                           "itemName":  "Whale Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "クジラの鳴き声"
                       },
                       {
                           "guid":  "myXCfF0XVh",
@@ -2697,7 +2703,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "I5c5IPkoWK",
                           "itemName":  "Boundaries",
-                          "itemNameJa":  null
+                          "itemNameJa":  "境界線"
                       },
                       {
                           "guid":  "cLeuHg3orc",
@@ -3129,7 +3135,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "HdmcYW9N-f",
                           "itemName":  "Confident Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "自信のあるポーズ"
                       },
                       {
                           "guid":  "xXqMi5LBPL",
@@ -3327,7 +3333,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "XyTNAnvs9N",
                           "itemName":  "Manta Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "マンタの鳴き声"
                       },
                       {
                           "guid":  "NB44ktOjko",
@@ -3363,7 +3369,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "-ax0YjoCqc",
                           "itemName":  "Aperture",
-                          "itemNameJa":  null
+                          "itemNameJa":  "開口部"
                       },
                       {
                           "guid":  "i7YkDXbska",
@@ -3561,7 +3567,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "o8VUub-4vw",
                           "itemName":  "Piano",
-                          "itemNameJa":  null
+                          "itemNameJa":  "ピアノ"
                       },
                       {
                           "guid":  "5C5Os6jguA",
@@ -3723,7 +3729,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "6Gz1udO5fI",
                           "itemName":  "Proud Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "誇り高いポーズ"
                       },
                       {
                           "guid":  "j7iUKGbnoi",
@@ -4110,7 +4116,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "I1fk2fnGDK",
                           "itemName":  "Cosmic Manta Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "コズミックマンタの鳴き声"
                       },
                       {
                           "guid":  "GTKnGXUhTY",
@@ -4209,7 +4215,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "8QnR-XHmJg",
                           "itemName":  "Polite Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "礼儀正しいポーズ"
                       },
                       {
                           "guid":  "-hpQUYeMjk",
@@ -4572,7 +4578,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "深淵の季節の案内人"
     },
     {
         "guid":  "4gwH1Tn9he",
@@ -4884,7 +4890,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "_FVDOa59ap",
                           "itemName":  "Without a Paddle",
-                          "itemNameJa":  null
+                          "itemNameJa":  "櫂のないまま"
                       },
                       {
                           "guid":  "lTQoGcB54y",
@@ -5028,7 +5034,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "a4LXqflNKy",
                           "itemName":  "Sowing Mischief",
-                          "itemNameJa":  null
+                          "itemNameJa":  "いたずらの種まき"
                       },
                       {
                           "guid":  "qZDDZzyVsl",
@@ -5127,7 +5133,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "B59f4_ru60",
                           "itemName":  "Assembly Ultimate Bugle",
-                          "itemNameJa":  null
+                          "itemNameJa":  "大樹の究極ラッパ"
                       },
                       {
                           "guid":  "Ji2B6vFsuJ",
@@ -5283,7 +5289,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "大樹に集う季節の案内人"
     },
     {
         "guid":  "94UEgV7ic1",
@@ -5586,7 +5592,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "gEKj_Dz9vX",
                           "itemName":  "Keeping Myself Together",
-                          "itemNameJa":  null
+                          "itemNameJa":  "自分を保つ"
                       },
                       {
                           "guid":  "94WMh6rPgV",
@@ -5955,7 +5961,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "2DIgMTKaK6",
                           "itemName":  "Forest Walk",
-                          "itemNameJa":  null
+                          "itemNameJa":  "森の散歩"
                       },
                       {
                           "guid":  "ol_6jIAK2A",
@@ -6264,7 +6270,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "サイレント拍手"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "AURORAの季節の案内人"
     },
     {
         "guid":  "20Xw7fuZWr",
@@ -6360,7 +6366,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "u3nAG8YXCu",
                           "itemName":  "Runaway",
-                          "itemNameJa":  null
+                          "itemNameJa":  "逃避行"
                       },
                       {
                           "guid":  "9b1slWYLae",
@@ -6612,7 +6618,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "l29ByRmu3Z",
                           "itemName":  "Warrior",
-                          "itemNameJa":  null
+                          "itemNameJa":  "戦士"
                       },
                       {
                           "guid":  "zbdlC8OcvX",
@@ -6738,7 +6744,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "HG2o6PBbZx",
                           "itemName":  "The Seed",
-                          "itemNameJa":  null
+                          "itemNameJa":  "種"
                       },
                       {
                           "guid":  "gXduSuzoHf",
@@ -6804,7 +6810,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "想いを編む季節の案内人"
     },
     {
         "guid":  "5u3TXZON81",
@@ -7125,7 +7131,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "N_FirAVIZf",
                           "itemName":  "Wise Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "賢明なポーズ"
                       },
                       {
                           "guid":  "kwaU0hDNZC",
@@ -7206,7 +7212,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "eXcIcaFA0k",
                           "itemName":  "Support From Above",
-                          "itemNameJa":  null
+                          "itemNameJa":  "天からの支え"
                       }
                   ],
         "nameJa":  "煌きを放つ親"
@@ -7296,7 +7302,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Zvi-5bPtxs",
                           "itemName":  "Guitar",
-                          "itemNameJa":  null
+                          "itemNameJa":  "ギター"
                       },
                       {
                           "guid":  "z5t_61gCHV",
@@ -7350,7 +7356,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "7Ul11Zqefz",
                           "itemName":  "Wavy Hair",
-                          "itemNameJa":  null
+                          "itemNameJa":  "ウェーブヘア"
                       },
                       {
                           "guid":  "bYxyqWvP4L",
@@ -7368,7 +7374,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Ph__M3uulY",
                           "itemName":  "Ukulele",
-                          "itemNameJa":  null
+                          "itemNameJa":  "ウクレレ"
                       },
                       {
                           "guid":  "OMYTdeq3GD",
@@ -7557,7 +7563,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Mra78XxrKT",
                           "itemName":  "Blue Bird Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "青い鳥の鳴き声"
                       },
                       {
                           "guid":  "NCVjZVkwSo",
@@ -7575,7 +7581,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "UNzV5t0pyZ",
                           "itemName":  "Despondent Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "落胆したポーズ"
                       },
                       {
                           "guid":  "IA6zkzUKRC",
@@ -7623,7 +7629,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "青い鳥の季節の案内人"
     },
     {
         "guid":  "2iDZqeJXTf",
@@ -8079,7 +8085,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Eg3nsg1MSx",
                           "itemName":  "Blue Bird of Happiness",
-                          "itemNameJa":  null
+                          "itemNameJa":  "幸せの青い鳥"
                       },
                       {
                           "guid":  "huKKqyGdor",
@@ -8376,7 +8382,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "カーニバルの季節の案内人"
     },
     {
         "guid":  "-tFOmsGdoa",
@@ -8775,7 +8781,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "zuyEeW2H9k",
                           "itemName":  "Music Sheet 46",
-                          "itemNameJa":  null
+                          "itemNameJa":  "楽譜46"
                       },
                       {
                           "guid":  "wjNgeGEqQp",
@@ -9306,7 +9312,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "ゴッホの季節の案内人"
     },
     {
         "guid":  "j3glWGK1kn",
@@ -10146,7 +10152,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "夢かなう季節の案内人"
     },
     {
         "guid":  "KhFZE8z0-I",
@@ -10251,7 +10257,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "s_79maNypQ",
                           "itemName":  "Forgotten Dance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "忘れられたダンス"
                       }
                   ],
         "nameJa":  "舞い踊る表現者"
@@ -10332,7 +10338,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "xpq4O_F_Md",
                           "itemName":  "Lute",
-                          "itemNameJa":  null
+                          "itemNameJa":  "リュート"
                       },
                       {
                           "guid":  "CSYMItHyJ7",
@@ -10404,7 +10410,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "P0s-2sxeCo",
                           "itemName":  "Springing Step",
-                          "itemNameJa":  null
+                          "itemNameJa":  "弾む足取り"
                       },
                       {
                           "guid":  "Gf22A_pZB9",
@@ -10776,7 +10782,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "重なる音色の季節の案内人"
     },
     {
         "guid":  "o4ZuAa_Q8u",
@@ -10980,7 +10986,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "KG-rMox4G2",
                           "itemName":  "Old Friends",
-                          "itemNameJa":  null
+                          "itemNameJa":  "古き友人たち"
                       },
                       {
                           "guid":  "Wl9yd-cPrn",
@@ -10998,7 +11004,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "hnvn7nWtrl",
                           "itemName":  "The Musicians\u0027 Legacy Cello",
-                          "itemNameJa":  null
+                          "itemNameJa":  "音楽家たちの遺産のチェロ"
                       },
                       {
                           "guid":  "aj5_tFeGeX",
@@ -11259,7 +11265,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Q393hmCmPi",
                           "itemName":  "Duets Cello",
-                          "itemNameJa":  null
+                          "itemNameJa":  "音色のチェロ"
                       },
                       {
                           "guid":  "5Zp6CYDD9F",
@@ -11424,7 +11430,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "魔法の季節の案内人"
     },
     {
         "guid":  "HphxLKhDBZ",
@@ -12015,7 +12021,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "G6L9jA7zsg",
                           "itemName":  "Drifting Over Sand",
-                          "itemNameJa":  null
+                          "itemNameJa":  "砂の上を漂う"
                       },
                       {
                           "guid":  "DgAJjNkKNj",
@@ -12243,7 +12249,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "羽ばたく季節の案内人"
     },
     {
         "guid":  "9Wl9kwxoFk",
@@ -12312,7 +12318,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "ygAEEh8bZ5",
                           "itemName":  "Everything Around Us",
-                          "itemNameJa":  null
+                          "itemNameJa":  "私たちを取り巻くすべて"
                       },
                       {
                           "guid":  "Vj9DhauQwu",
@@ -12402,7 +12408,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "YiLDQF0uDU",
                           "itemName":  "Baby Manta Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "赤ちゃんマンタの鳴き声"
                       },
                       {
                           "guid":  "Ca5GmG1gRO",
@@ -12510,7 +12516,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Jgp0s63dVZ",
                           "itemName":  "Tinker Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "修理好きなポーズ"
                       },
                       {
                           "guid":  "8YT3kpt0_o",
@@ -12573,7 +12579,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "t3hOiGsS79",
                           "itemName":  "Kalimba",
-                          "itemNameJa":  null
+                          "itemNameJa":  "カリンバ"
                       },
                       {
                           "guid":  "xpwmZwCyL2",
@@ -12717,7 +12723,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "sTi8F25qWL",
                           "itemName":  "Flying Among the Stars",
-                          "itemNameJa":  null
+                          "itemNameJa":  "星々の間を飛んで"
                       },
                       {
                           "guid":  "B4KRSbRDO7",
@@ -12765,7 +12771,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "感謝の究極　マスク"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "感謝の季節の案内人"
     },
     {
         "guid":  "0yGgX4Yk3c",
@@ -12789,7 +12795,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "SadZcfujh7",
                           "itemName":  "Sassy Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "生意気なポーズ"
                       },
                       {
                           "guid":  "uRmcplmzik",
@@ -13023,7 +13029,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "kWs-MLO3ZE",
                           "itemName":  "Wide Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "幅広なポーズ"
                       },
                       {
                           "guid":  "rgiQqZO6aU",
@@ -13131,7 +13137,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "eL5WjOsMrx",
                           "itemName":  "Small Bell",
-                          "itemNameJa":  null
+                          "itemNameJa":  "小さな鐘"
                       },
                       {
                           "guid":  "GZf2kQJvkU",
@@ -13248,7 +13254,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "_hk1ya3nj0",
                           "itemName":  "Waltzing in the Rain",
-                          "itemNameJa":  null
+                          "itemNameJa":  "雨の中のワルツ"
                       },
                       {
                           "guid":  "8DwtAb37xO",
@@ -13356,7 +13362,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "aFozSzjdTL",
                           "itemName":  "Large Bell",
-                          "itemNameJa":  null
+                          "itemNameJa":  "大きな鐘"
                       },
                       {
                           "guid":  "AGdnjNIAnM",
@@ -13674,7 +13680,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "クエスト12"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "光の修繕者の季節の案内人"
     },
     {
         "guid":  "la4vZslNOy",
@@ -14370,7 +14376,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "光の探求者の究極　光海月の雨傘"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "光の探求者の季節の案内人"
     },
     {
         "guid":  "U9RJMJseUK",
@@ -14511,7 +14517,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "qR79V6fLUy",
                           "itemName":  "Flute",
-                          "itemNameJa":  null
+                          "itemNameJa":  "フルート"
                       },
                       {
                           "guid":  "i4oGY7F9EU",
@@ -14556,7 +14562,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "_o__3iD1Rh",
                           "itemName":  "Laidback Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "くつろいだポーズ"
                       },
                       {
                           "guid":  "qbwqKq15oV",
@@ -14691,7 +14697,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "PIRW3pt_BE",
                           "itemName":  "Panflute",
-                          "itemNameJa":  null
+                          "itemNameJa":  "パンフルート"
                       },
                       {
                           "guid":  "PxCXBb4yoO",
@@ -14745,7 +14751,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "ySbxSrn-4l",
                           "itemName":  "Crab Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "蟹の鳴き声"
                       },
                       {
                           "guid":  "ZeVymI00bm",
@@ -14808,7 +14814,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "NqdFQpeUSh",
                           "itemName":  "Relaxed Steps",
-                          "itemNameJa":  null
+                          "itemNameJa":  "くつろいだ足取り"
                       },
                       {
                           "guid":  "ZK5ugPf4U-",
@@ -15213,7 +15219,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "クエスト10"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "渡りの季節の案内人"
     },
     {
         "guid":  "1mYa5Pnpdy",
@@ -15900,7 +15906,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Vn86dp1yII",
                           "itemName":  "Lighthorn Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "灯火の角笛の音"
                       },
                       {
                           "guid":  "01Z0VpJOzS",
@@ -15912,7 +15918,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "T-3x4Ot1p0",
                           "itemName":  "Ancient Echo",
-                          "itemNameJa":  null
+                          "itemNameJa":  "古の残響"
                       },
                       {
                           "guid":  "4qSVqimiOp",
@@ -16059,7 +16065,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "K_OhSP_gST",
                           "itemName":  "Camera",
-                          "itemNameJa":  null
+                          "itemNameJa":  "カメラ"
                       },
                       {
                           "guid":  "9tzFO12e02",
@@ -16086,7 +16092,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "W-3Nh_yWGv",
                           "itemName":  "Moments Ultimate Camera",
-                          "itemNameJa":  null
+                          "itemNameJa":  "瞬きの究極カメラ"
                       },
                       {
                           "guid":  "vRNYKRs1OX",
@@ -16206,7 +16212,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "瞬きの季節の案内人"
     },
     {
         "guid":  "jh-fGKllmH",
@@ -16383,7 +16389,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "1T0D06zFUX",
                           "itemName":  "Waltz of the Plains",
-                          "itemNameJa":  null
+                          "itemNameJa":  "平原のワルツ"
                       },
                       {
                           "guid":  "Bb-9MVW6Zt",
@@ -16581,7 +16587,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "7j3bbradN0",
                           "itemName":  "Nightbird Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "夜の鳥の鳴き声"
                       },
                       {
                           "guid":  "x0EFx1BiqD",
@@ -16854,7 +16860,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "本を読む"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "ムーミンの本"
     },
     {
         "guid":  "9RTxyGCw9v",
@@ -16995,7 +17001,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "CQfjHlF9f7",
                           "itemName":  "Finding Happiness",
-                          "itemNameJa":  null
+                          "itemNameJa":  "幸せを見つけて"
                       },
                       {
                           "guid":  "2KCKrJCNMl",
@@ -17094,7 +17100,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "WaDDSPDCOw",
                           "itemName":  "Worlds Between",
-                          "itemNameJa":  null
+                          "itemNameJa":  "世界のはざまで"
                       },
                       {
                           "guid":  "xvTg24Iwar",
@@ -17103,7 +17109,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "iKNPyHiACK",
                           "itemName":  "Spirit Of Adventure Harmonica",
-                          "itemNameJa":  null
+                          "itemNameJa":  "冒険の心のハーモニカ"
                       },
                       {
                           "guid":  "_vrQxjRIn0",
@@ -17430,7 +17436,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "巣づくりの季節の案内人"
     },
     {
         "guid":  "L6Rqyh4Xi9",
@@ -17979,7 +17985,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "壁画の精"
     },
     {
         "guid":  "gyEBXKOIwY",
@@ -18273,7 +18279,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "H3IbNNMgeI",
                           "itemName":  "Deer Song",
-                          "itemNameJa":  null
+                          "itemNameJa":  "鹿の歌"
                       },
                       {
                           "guid":  "oSY366YRwW",
@@ -18645,7 +18651,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "ならいの季節の案内人"
     },
     {
         "guid":  "udBbDIhZtD",
@@ -19101,7 +19107,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "kk4P3a0tb_",
                           "itemName":  "Manta Ocarina",
-                          "itemNameJa":  null
+                          "itemNameJa":  "マンタのオカリナ"
                       },
                       {
                           "guid":  "Czc9aNddzX",
@@ -19347,7 +19353,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "思い出共有の魔法"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "表現者たちの季節の案内人"
     },
     {
         "guid":  "4iotcmsn0K",
@@ -19452,7 +19458,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "LE-qwy-wie",
                           "itemName":  "Step by Step",
-                          "itemNameJa":  null
+                          "itemNameJa":  "一歩ずつ"
                       }
                   ],
         "nameJa":  "一生懸命な舞台美術家"
@@ -19677,7 +19683,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "ARf5D2Bu4v",
                           "itemName":  "Electric Guitar",
-                          "itemNameJa":  null
+                          "itemNameJa":  "エレキギター"
                       },
                       {
                           "guid":  "XVCxWwLYlz",
@@ -19821,7 +19827,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Gv945yQObD",
                           "itemName":  "Hidden Dance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "隠されたダンス"
                       }
                   ],
         "nameJa":  "慎み深い踊り手"
@@ -19866,7 +19872,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "wGQSuhVWXD",
                           "itemName":  "Prophecy Ultimate Drum",
-                          "itemNameJa":  null
+                          "itemNameJa":  "預言の究極ドラム"
                       },
                       {
                           "guid":  "xM4sZDf0RW",
@@ -19941,7 +19947,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "預言者の季節の案内人"
     },
     {
         "guid":  "9Rgsos9xqE",
@@ -20145,7 +20151,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "cCVggJ8g_b",
                           "itemName":  "Soft Blanket",
-                          "itemNameJa":  null
+                          "itemNameJa":  "柔らかな毛布"
                       },
                       {
                           "guid":  "D_Jq-_wcAB",
@@ -20415,7 +20421,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "lKskRU-rAW",
                           "itemName":  "Disappearing Ashes",
-                          "itemNameJa":  null
+                          "itemNameJa":  "消えゆく灰"
                       },
                       {
                           "guid":  "1JwVX0K6f-",
@@ -20661,7 +20667,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "光に染まる季節の案内人"
     },
     {
         "guid":  "SS7FZgJDLx",
@@ -20946,7 +20952,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "sQ7RAL1GWd",
                           "itemName":  "Cymbals",
-                          "itemNameJa":  null
+                          "itemNameJa":  "シンバル"
                       },
                       {
                           "guid":  "r4k_989hLR",
@@ -21408,7 +21414,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "追慕の季節の案内人"
     },
     {
         "guid":  "O1olUBrkJ5",
@@ -21792,7 +21798,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "6dT44er9LL",
                           "itemName":  "Injured Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "傷ついたポーズ"
                       },
                       {
                           "guid":  "B83m2saxxD",
@@ -22074,7 +22080,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "希望の番人"
     },
     {
         "guid":  "53sRWu-bTI",
@@ -22269,7 +22275,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "r7n2STEeMu",
                           "itemName":  "A Quiet Walk",
-                          "itemNameJa":  null
+                          "itemNameJa":  "静かな散歩"
                       },
                       {
                           "guid":  "6U22Qbbb4U",
@@ -22425,7 +22431,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "リズムが弾ける季節の案内人"
     },
     {
         "guid":  "Q5pn7wxwUD",
@@ -22530,7 +22536,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "ixu-bQFMqR",
                           "itemName":  "Floating Bubbles",
-                          "itemNameJa":  null
+                          "itemNameJa":  "浮かぶ泡"
                       },
                       {
                           "guid":  "e1U_Uhhyf7",
@@ -22629,7 +22635,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "4XuHymnqlr",
                           "itemName":  "Spinning Thoughts",
-                          "itemNameJa":  null
+                          "itemNameJa":  "巡る想い"
                       },
                       {
                           "guid":  "vm-4ZZVAEE",
@@ -22728,7 +22734,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "GEC1VNDUG2",
                           "itemName":  "Lighting the Way",
-                          "itemNameJa":  null
+                          "itemNameJa":  "道を照らす"
                       },
                       {
                           "guid":  "4WjBL4OKZ0",
@@ -22953,7 +22959,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "M1MCfh7sVo",
                           "itemName":  "Winter Piano",
-                          "itemNameJa":  null
+                          "itemNameJa":  "冬のピアノ"
                       },
                       {
                           "guid":  "Y3TVH8uZQ1",
@@ -23070,7 +23076,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "DVcrj6XSgH",
                           "itemName":  "Xylophone",
-                          "itemNameJa":  null
+                          "itemNameJa":  "シロフォン"
                       },
                       {
                           "guid":  "SUMhxkauzE",
@@ -23142,7 +23148,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Hvq52gCeih",
                           "itemName":  "Sanctuary Ultimate Handpan",
-                          "itemNameJa":  null
+                          "itemNameJa":  "楽園の究極ハンドパン"
                       },
                       {
                           "guid":  "z9iDVc4j9_",
@@ -23253,7 +23259,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "楽園の季節の案内人"
     },
     {
         "guid":  "jx7koL5guD",
@@ -23277,7 +23283,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "U7lPqW1fa0",
                           "itemName":  "Jellyfish Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "クラゲの鳴き声"
                       },
                       {
                           "guid":  "r6j4jVZSS1",
@@ -23286,7 +23292,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "jx_1R13Z_n",
                           "itemName":  "Uneven Rhythms",
-                          "itemNameJa":  null
+                          "itemNameJa":  "不揃いなリズム"
                       },
                       {
                           "guid":  "VaBe3lclCx",
@@ -23367,7 +23373,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "QnA3xwSNod",
                           "itemName":  "Timid Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "内気なポーズ"
                       },
                       {
                           "guid":  "-kNd0tZZEb",
@@ -23430,7 +23436,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "tCq4FrOkVn",
                           "itemName":  "Back and Forth",
-                          "itemNameJa":  null
+                          "itemNameJa":  "行ったり来たり"
                       }
                   ],
         "nameJa":  "引っ込み思案な読書家"
@@ -24036,7 +24042,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "砕ける闇の虚"
     },
     {
         "guid":  "KqGJfPvqrM",
@@ -24222,7 +24228,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "SL_uFHTqjm",
                           "itemName":  "Searching for Questions",
-                          "itemNameJa":  null
+                          "itemNameJa":  "問いを探して"
                       }
                   ],
         "nameJa":  "万古の光（マンタ）"
@@ -24294,7 +24300,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "yonX7TEJZQ",
                           "itemName":  "Dark Horn",
-                          "itemNameJa":  null
+                          "itemNameJa":  "闇のホルン"
                       },
                       {
                           "guid":  "FIGh_Zu_Wx",
@@ -24411,7 +24417,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "ORKBuwdSG2",
                           "itemName":  "Earnest Looks",
-                          "itemNameJa":  null
+                          "itemNameJa":  "真摯なまなざし"
                       }
                   ],
         "nameJa":  "万古の闇（蝕む闇）"
@@ -24603,7 +24609,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "バラ"
     },
     {
         "guid":  "JOCCkr0TlW",
@@ -24816,7 +24822,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "IlbDThInaP",
                           "itemName":  "Looking Up to the Stars",
-                          "itemNameJa":  null
+                          "itemNameJa":  "星を見上げて"
                       },
                       {
                           "guid":  "5V_66z805e",
@@ -25041,7 +25047,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "JygPyVo177",
                           "itemName":  "A Glimpse Within",
-                          "itemNameJa":  null
+                          "itemNameJa":  "内なる光景"
                       },
                       {
                           "guid":  "Ttq3vbTVwn",
@@ -25431,7 +25437,7 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ハート"
                       }
                   ],
-        "nameJa":  null
+        "nameJa":  "ふたつの灯火の季節　前編の案内人"
     },
     {
         "guid":  "aO0n7dAWvc",
@@ -25464,7 +25470,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "KYolrTZPtJ",
                           "itemName":  "Manatee Toy",
-                          "itemNameJa":  null
+                          "itemNameJa":  "マナティのおもちゃ"
                       },
                       {
                           "guid":  "2jAYnaQ61M",
@@ -25554,7 +25560,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "0fIErjYx4B",
                           "itemName":  "Manatee Call",
-                          "itemNameJa":  null
+                          "itemNameJa":  "マナティの鳴き声"
                       },
                       {
                           "guid":  "jz_WmmSf3r",
@@ -25563,7 +25569,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "sLyKSpc0hb",
                           "itemName":  "Life and Sanctuary",
-                          "itemNameJa":  null
+                          "itemNameJa":  "命と聖域"
                       },
                       {
                           "guid":  "Kv01p-HRaU",
@@ -25617,7 +25623,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "Ll1veXMDa9",
                           "itemName":  "Stern Shepherd Cane",
-                          "itemNameJa":  null
+                          "itemNameJa":  "手負いの巡回兵の杖"
                       },
                       {
                           "guid":  "jCew8MjPtR",
@@ -25761,7 +25767,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "2KB9ImL1SW",
                           "itemName":  "Scarred Stance",
-                          "itemNameJa":  null
+                          "itemNameJa":  "傷跡のあるポーズ"
                       },
                       {
                           "guid":  "ojYsXvuaZV",
@@ -25797,7 +25803,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "3kxBYG-yVK",
                           "itemName":  "Scarred Sentry Shield",
-                          "itemNameJa":  null
+                          "itemNameJa":  "厳格なマナティ飼いの盾"
                       },
                       {
                           "guid":  "_Dvi4zvM6x",
@@ -25824,7 +25830,7 @@ const SPIRIT_TREE_DATA = [
                                    },
                           "itemGuid":  "NQsPOB-fqz",
                           "itemName":  "Scarred Sentry Spear",
-                          "itemNameJa":  null
+                          "itemNameJa":  "厳格なマナティ飼いの槍"
                       },
                       {
                           "guid":  "3iBGJh3CwS",
