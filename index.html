@@ -596,7 +596,27 @@ function toggleNode(spiritGuid, nodeGuid) {
 
 /* ================================================================
    精霊データの前処理
+   一覧の並び順を「季節の実装順」にする: シーズン無し(恒常/長老/特殊、
+   基本ゲーム発売時から存在)を先頭に、以降はSEASON_JA_MAPのキー順
+   (=季節の実装順)→季節内ではseasonOrderIndex(案内人が0、以降精霊の
+   登場順)で並べる。
    ================================================================ */
+function sortSpiritsBySeasonOrder() {
+  const seasonOrder = {};
+  Object.keys(SEASON_JA_MAP).forEach((k, i) => { seasonOrder[k] = i; });
+  SPIRIT_TREE_DATA.sort((a, b) => {
+    const aHasSeason = a.season ? 1 : 0;
+    const bHasSeason = b.season ? 1 : 0;
+    if (aHasSeason !== bHasSeason) return aHasSeason - bHasSeason;
+    if (!aHasSeason) return (a.nameJa || a.name).localeCompare(b.nameJa || b.name, 'ja');
+    const aIdx = seasonOrder[a.season] ?? 999;
+    const bIdx = seasonOrder[b.season] ?? 999;
+    if (aIdx !== bIdx) return aIdx - bIdx;
+    return (a.seasonOrderIndex ?? 0) - (b.seasonOrderIndex ?? 0);
+  });
+}
+sortSpiritsBySeasonOrder();
+
 const spiritByGuid = {};
 SPIRIT_TREE_DATA.forEach(s => { spiritByGuid[s.guid] = s; });
 
@@ -750,7 +770,8 @@ function treeNodeHtml(spiritGuid, n, style) {
 
 /* ================================================================
    非段階ツリーの枝分かれレイアウト計算（nw/n/ne から座標を算出）
-   ルートは深さ0、葉ノードは左から順に整数x、親は子の平均x。
+   本家の見た目に合わせ、n（直進）方向の子は親と同じx座標にして縦に
+   まっすぐ揃え、nw/ne（側枝）方向の子だけが斜めに分岐するようにする。
    ================================================================ */
 function computeTreeLayout(s) {
   const nodeMap = {};
@@ -760,16 +781,29 @@ function computeTreeLayout(s) {
 
   const depthOf = {}, xOf = {}, parentOf = {};
   let nextLeafX = 0;
-  function childrenOf(n) { return [n.nw, n.n, n.ne].filter(g => g && nodeMap[g]); }
   function assign(guid, depth) {
     depthOf[guid] = depth;
-    const kids = childrenOf(nodeMap[guid]);
+    const node = nodeMap[guid];
+    const nwG = node.nw && nodeMap[node.nw] ? node.nw : null;
+    const nG  = node.n  && nodeMap[node.n]  ? node.n  : null;
+    const neG = node.ne && nodeMap[node.ne] ? node.ne : null;
+
+    let nwX = null, nX = null, neX = null;
+    if (nwG) { parentOf[nwG] = guid; nwX = assign(nwG, depth + 1); }
+    if (nG)  { parentOf[nG]  = guid; nX  = assign(nG,  depth + 1); }
+    if (neG) { parentOf[neG] = guid; neX = assign(neG, depth + 1); }
+
     let x;
-    if (kids.length === 0) {
-      x = nextLeafX; nextLeafX += 1;
-    } else {
-      const xs = kids.map(k => { parentOf[k] = guid; return assign(k, depth + 1); });
+    if (nX !== null) {
+      // 直進の子があれば親も同じx座標にして幹を縦一直線にする
+      x = nX;
+    } else if (nwX !== null || neX !== null) {
+      // 直進の子がなく側枝のみの分岐点（稀なケース）: 側枝の中間に配置
+      const xs = [nwX, neX].filter(v => v !== null);
       x = xs.reduce((a, b) => a + b, 0) / xs.length;
+    } else {
+      // 末端の葉ノード
+      x = nextLeafX; nextLeafX += 1;
     }
     xOf[guid] = x;
     return x;
