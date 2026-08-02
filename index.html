@@ -599,16 +599,44 @@ function toggleNode(spiritGuid, nodeGuid) {
    一覧の並び順を「季節の実装順」にする: シーズン無し(恒常/長老/特殊、
    基本ゲーム発売時から存在)を先頭に、以降はSEASON_JA_MAPのキー順
    (=季節の実装順)→季節内ではseasonOrderIndex(案内人が0、以降精霊の
-   登場順)で並べる。
+   登場順)で並べる。恒常精霊はさらにリアルム順(孤島→草原→雨林→峡谷→
+   捨てられた地→書庫)で並べる。
    ================================================================ */
+const REALM_ORDER = ['Isle of Dawn', 'Daylight Prairie', 'Hidden Forest', 'Valley of Triumph', 'Golden Wasteland', 'Vault of Knowledge'];
+const AREA_TO_REALM = {
+  'Dawn Circle': 'Isle of Dawn', 'Temple of the Isle Entrance': 'Isle of Dawn',
+  'Prairie Heights': 'Daylight Prairie', 'Prairie Village': 'Daylight Prairie', 'Prairie Cave': 'Daylight Prairie',
+  'Butterfly Fields': 'Daylight Prairie', 'Bird Nest': 'Daylight Prairie',
+  'Forest Brook': 'Hidden Forest', 'Forest Courtyard': 'Hidden Forest', 'Boneyard': 'Hidden Forest',
+  'The Coliseum': 'Valley of Triumph', 'The Citadel': 'Valley of Triumph', 'Frozen Lake': 'Valley of Triumph',
+  'The Graveyard': 'Golden Wasteland', 'Wasteland Battlefield': 'Golden Wasteland',
+  'Crab Fields': 'Golden Wasteland', 'The Outer Bailey': 'Golden Wasteland',
+  'Vault Rest': 'Vault of Knowledge', 'Upper Vault': 'Vault of Knowledge',
+  'Lower Vault': 'Vault of Knowledge', 'Vault Second Floor': 'Vault of Knowledge'
+};
 function sortSpiritsBySeasonOrder() {
   const seasonOrder = {};
   Object.keys(SEASON_JA_MAP).forEach((k, i) => { seasonOrder[k] = i; });
+  const realmOrder = {};
+  REALM_ORDER.forEach((r, i) => { realmOrder[r] = i; });
+  const noSeasonTypeOrder = { Special: 0, Elder: 1, Regular: 2 };
+
   SPIRIT_TREE_DATA.sort((a, b) => {
     const aHasSeason = a.season ? 1 : 0;
     const bHasSeason = b.season ? 1 : 0;
     if (aHasSeason !== bHasSeason) return aHasSeason - bHasSeason;
-    if (!aHasSeason) return (a.nameJa || a.name).localeCompare(b.nameJa || b.name, 'ja');
+    if (!aHasSeason) {
+      const aType = noSeasonTypeOrder[a.type] ?? 9;
+      const bType = noSeasonTypeOrder[b.type] ?? 9;
+      if (aType !== bType) return aType - bType;
+      if (a.type === 'Regular' && b.type === 'Regular') {
+        const aRealm = realmOrder[AREA_TO_REALM[a.area]] ?? 999;
+        const bRealm = realmOrder[AREA_TO_REALM[b.area]] ?? 999;
+        if (aRealm !== bRealm) return aRealm - bRealm;
+        if (a.area !== b.area) return (a.area || '').localeCompare(b.area || '', 'en');
+      }
+      return (a.nameJa || a.name).localeCompare(b.nameJa || b.name, 'ja');
+    }
     const aIdx = seasonOrder[a.season] ?? 999;
     const bIdx = seasonOrder[b.season] ?? 999;
     if (aIdx !== bIdx) return aIdx - bIdx;
@@ -770,8 +798,9 @@ function treeNodeHtml(spiritGuid, n, style) {
 
 /* ================================================================
    非段階ツリーの枝分かれレイアウト計算（nw/n/ne から座標を算出）
-   本家の見た目に合わせ、n（直進）方向の子は親と同じx座標にして縦に
-   まっすぐ揃え、nw/ne（側枝）方向の子だけが斜めに分岐するようにする。
+   本家の見た目に合わせ、n（直進）方向の子は親と同じx座標（縦一直線）、
+   nw/ne（側枝）方向の子は親から常に一定距離（1ユニット）だけ左右に
+   ずらす。側枝のサブツリーの大きさに関わらず、分岐の距離は常に一定にする。
    ================================================================ */
 function computeTreeLayout(s) {
   const nodeMap = {};
@@ -780,37 +809,21 @@ function computeTreeLayout(s) {
   if (!root || !nodeMap[root]) return null;
 
   const depthOf = {}, xOf = {}, parentOf = {};
-  let nextLeafX = 0;
-  function assign(guid, depth) {
+  function assign(guid, depth, x) {
     depthOf[guid] = depth;
-    const node = nodeMap[guid];
-    const nwG = node.nw && nodeMap[node.nw] ? node.nw : null;
-    const nG  = node.n  && nodeMap[node.n]  ? node.n  : null;
-    const neG = node.ne && nodeMap[node.ne] ? node.ne : null;
-
-    let nwX = null, nX = null, neX = null;
-    if (nwG) { parentOf[nwG] = guid; nwX = assign(nwG, depth + 1); }
-    if (nG)  { parentOf[nG]  = guid; nX  = assign(nG,  depth + 1); }
-    if (neG) { parentOf[neG] = guid; neX = assign(neG, depth + 1); }
-
-    let x;
-    if (nX !== null) {
-      // 直進の子があれば親も同じx座標にして幹を縦一直線にする
-      x = nX;
-    } else if (nwX !== null || neX !== null) {
-      // 直進の子がなく側枝のみの分岐点（稀なケース）: 側枝の中間に配置
-      const xs = [nwX, neX].filter(v => v !== null);
-      x = xs.reduce((a, b) => a + b, 0) / xs.length;
-    } else {
-      // 末端の葉ノード
-      x = nextLeafX; nextLeafX += 1;
-    }
     xOf[guid] = x;
-    return x;
+    const node = nodeMap[guid];
+    if (node.nw && nodeMap[node.nw]) { parentOf[node.nw] = guid; assign(node.nw, depth + 1, x - 1); }
+    if (node.n  && nodeMap[node.n])  { parentOf[node.n]  = guid; assign(node.n,  depth + 1, x); }
+    if (node.ne && nodeMap[node.ne]) { parentOf[node.ne] = guid; assign(node.ne, depth + 1, x + 1); }
   }
-  assign(root, 0);
+  assign(root, 0, 0);
+
+  const xs = Object.values(xOf);
+  const minX = Math.min(...xs), maxX = Math.max(...xs);
+  Object.keys(xOf).forEach(g => { xOf[g] -= minX; });
   const maxDepth = Math.max(...Object.values(depthOf));
-  return { nodeMap, depthOf, xOf, parentOf, maxDepth, leafCount: Math.max(nextLeafX, 1) };
+  return { nodeMap, depthOf, xOf, parentOf, maxDepth, leafCount: (maxX - minX + 1) };
 }
 
 /* ================================================================
