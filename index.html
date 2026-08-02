@@ -565,6 +565,23 @@ function syncItemOwned(node, nowUnlocked) {
 }
 
 /* ================================================================
+   emote（エモート所持率管理）の所持データと自動同期
+   （ノード解放 = そのエモートの該当レベルをemote側で「所持」扱いにする）
+   emoteOwned_v1 は { [emoteId]: [所持しているレベル番号の配列] } の形式。
+   ================================================================ */
+function syncEmoteOwned(node, nowUnlocked) {
+  if (!node.emoteId || !node.emoteLevel) return;
+  const key = nsKey('emoteOwned_v1');
+  let data;
+  try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) { data = {}; }
+  const owned = new Set(data[node.emoteId] || []);
+  if (nowUnlocked) { owned.add(node.emoteLevel); } else { owned.delete(node.emoteLevel); }
+  const arr = Array.from(owned).sort((a, b) => a - b);
+  if (arr.length === 0) { delete data[node.emoteId]; } else { data[node.emoteId] = arr; }
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+/* ================================================================
    ノードの解放／解除トグル（同期処理込み）
    ================================================================ */
 function toggleNode(spiritGuid, nodeGuid) {
@@ -589,6 +606,9 @@ function toggleNode(spiritGuid, nodeGuid) {
 
   // アイテムカタログと対応が取れているノードならitemの所持アイテムとも同期
   syncItemOwned(node, nowUnlocked);
+
+  // エモートカタログと対応が取れているノードならemoteの所持データとも同期
+  syncEmoteOwned(node, nowUnlocked);
 
   renderDetail(spiritGuid);
   renderGrid();
@@ -783,13 +803,15 @@ function treeNodeHtml(spiritGuid, n, style) {
     `<span class="cost-chip cost-${k}">${COST_ICON[k] || ''}${n.cost[k]}</span>`
   ).join('');
   const wingTag = n.itemType === 'WingBuff' ? '<span class="tree-node-wingtag" title="羽トラッカーと同期されます">🪽</span>' : '';
+  const emoteTag = (n.itemType === 'Emote' && n.emoteId && n.emoteLevel)
+    ? `<span class="tree-node-wingtag" title="エモート管理と同期されます（Lv${n.emoteLevel}）">🎭</span>` : '';
   return `
     <div class="tree-node-wrap" style="${style || ''}">
       <div class="tree-node-circle-holder">
         <button type="button" class="tree-node ${unlocked ? 'checked' : ''}" onclick="toggleNode('${spiritGuid}','${n.guid}')" title="${escapeHtml(name)}">
           <span class="tree-node-icon">${unlocked ? '✓' : icon}</span>
         </button>
-        ${wingTag}
+        ${wingTag}${emoteTag}
       </div>
       <div class="tree-node-label ${noJa ? 'no-ja' : ''}">${escapeHtml(name)}</div>
       <div class="tree-node-cost">${costChips}</div>

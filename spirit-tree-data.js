@@ -67,6 +67,12 @@
 //   when a confident name-based match was found (389/2343 nodes, mostly
 //   Cape/Hair/Mask/Outfit/Necklace/etc type items). Use this to sync node
 //   unlocks with item's gameItems_<catKey> owned-item storage.
+// - Emote-type nodes may carry emoteId + emoteLevel: a match against
+//   emote repo's EMOTES_DATA (id) plus the exact level number (1-6,
+//   from SkyGame-Data's own per-item level field, precise -- not a
+//   name-based guess), present for 466/508 Emote nodes. Use this to sync
+//   node unlocks with emote's emoteOwned_v1 (per-emote array of owned
+//   level numbers) storage.
 const SPIRIT_TREE_DATA = [
     {
         "guid":  "os6ryCdFZ5",
@@ -491,7 +497,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "ZA_i29cDwE",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_008",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "ZA_i29cDwE",
@@ -551,7 +559,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "VKG0YbZS0F",
                           "ne":  "Zzv0Ek4rpz",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_008",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Zzv0Ek4rpz",
@@ -626,7 +636,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_008",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "UGrHACWCSu",
@@ -656,7 +668,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_008",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "蝶々使い",
@@ -690,7 +704,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "WMZn5UBB9x",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_009",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "WMZn5UBB9x",
@@ -750,7 +766,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "1jiHTw9GOG",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_009",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "1jiHTw9GOG",
@@ -780,7 +798,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_009",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "AQ62eYtv1p",
@@ -810,7 +830,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_009",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "賞賛する鐘の造り手",
@@ -844,7 +866,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "nviKQuBBfO",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_010",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "nviKQuBBfO",
@@ -904,7 +928,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "UDaegoBxDA",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_010",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "UDaegoBxDA",
@@ -949,7 +975,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "hAPHwbFmPg",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_010",
+                          "emoteLevel":  5
                       },
                       {
                           "guid":  "hAPHwbFmPg",
@@ -964,7 +992,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_010",
+                          "emoteLevel":  6
                       },
                       {
                           "guid":  "0xGkjL3wSv",
@@ -994,7 +1024,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_010",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "u0PPjJdCOF",
@@ -1024,7 +1056,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_010",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "手を振る鐘の造り手",
@@ -1058,7 +1092,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "ir1ehWXQnk",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_012",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "ir1ehWXQnk",
@@ -1118,7 +1154,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "_1IsdA5dmk",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_012",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "_1IsdA5dmk",
@@ -1148,7 +1186,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_012",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "JTXJKrrgI1",
@@ -1178,7 +1218,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_012",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "寝不足の造舟師",
@@ -1212,7 +1254,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "-nwjGcrU68",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_011",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "-nwjGcrU68",
@@ -1272,7 +1316,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "65OcW-3x7c",
                           "ne":  "YLT_OAnr11",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_011",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "YLT_OAnr11",
@@ -1317,7 +1363,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_011",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "YeKvefYscp",
@@ -1347,7 +1395,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_011",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "笑う光採取者",
@@ -1505,7 +1555,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "RAQgAcpdB9",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_013",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "RAQgAcpdB9",
@@ -1550,7 +1602,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "kogoV4pjhn",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_013",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "kogoV4pjhn",
@@ -1595,7 +1649,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_013",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "zmMKnIo-y3",
@@ -1625,7 +1681,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_013",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "疲弊した荷積み人",
@@ -1659,7 +1717,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "cijZ0soCyh",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_014",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "cijZ0soCyh",
@@ -1802,7 +1862,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "HoR5G5K1wx",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_046",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "HoR5G5K1wx",
@@ -1862,7 +1924,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "9s2hp7O1nc",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_046",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "9s2hp7O1nc",
@@ -1907,7 +1971,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_046",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "S8f4ih7Zch",
@@ -1937,7 +2003,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_046",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "怯える難民",
@@ -1971,7 +2039,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "GOF_EvqTiE",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_047",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "GOF_EvqTiE",
@@ -2031,7 +2101,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "qPEV3Gitb0",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_047",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "qPEV3Gitb0",
@@ -2076,7 +2148,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_047",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "JU_tvCKm4a",
@@ -2106,7 +2180,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_047",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "昏倒する戦士",
@@ -2448,7 +2524,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "HffpdtFzoC",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_050",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "HffpdtFzoC",
@@ -2508,7 +2586,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "eFfuLN0aAT",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_050",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "eFfuLN0aAT",
@@ -2553,7 +2633,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_050",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "xnBPcQjKC9",
@@ -2583,7 +2665,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_050",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "敬礼する隊長",
@@ -2617,7 +2701,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "mv30bXTshX",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_049",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "mv30bXTshX",
@@ -2677,7 +2763,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "qdTUeXWYH6",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_049",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "qdTUeXWYH6",
@@ -2722,7 +2810,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_049",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "gMKh7rWi3c",
@@ -2752,7 +2842,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_049",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "警戒する斥候",
@@ -2820,7 +2912,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "WLYD-ygmwh",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_019",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "WLYD-ygmwh",
@@ -2880,7 +2974,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "JgiCKzK6Ag",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_019",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "JgiCKzK6Ag",
@@ -2925,7 +3021,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_019",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "bQj9bFjWMP",
@@ -2955,7 +3053,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_019",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "凍える先駆者",
@@ -2989,7 +3089,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "eH3_w15Ede",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_022",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "eH3_w15Ede",
@@ -3049,7 +3151,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "l28H-KUE-0",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_022",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "l28H-KUE-0",
@@ -3094,7 +3198,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_022",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "aZKQYaxEXL",
@@ -3124,7 +3230,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_022",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "恥じらう探鉱者",
@@ -3158,7 +3266,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "9jwt3nE2BP",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_020",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "9jwt3nE2BP",
@@ -3312,7 +3422,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "tM4s9rsVmm",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_021",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "tM4s9rsVmm",
@@ -3372,7 +3484,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "_km-B2hJqM",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_021",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "_km-B2hJqM",
@@ -3447,7 +3561,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_021",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "zFlVSqnOb1",
@@ -3477,7 +3593,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_021",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "怒れる運び人",
@@ -3511,7 +3629,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "-rtgCDDkZN",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_023",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "-rtgCDDkZN",
@@ -3571,7 +3691,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "2d7fWycKI3",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_023",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "2d7fWycKI3",
@@ -3646,7 +3768,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_023",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "yfsTIiv3VE",
@@ -3676,7 +3800,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_023",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "うろたえる狩人",
@@ -3710,7 +3836,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "fsdWGhH8tz",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_024",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "fsdWGhH8tz",
@@ -3770,7 +3898,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "z_iXzSrwRR",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_024",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "z_iXzSrwRR",
@@ -3815,7 +3945,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_024",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "GSVLKzvD7X",
@@ -3845,7 +3977,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_024",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "反省する木こり",
@@ -3879,7 +4013,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "TbkPiKZo4_",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_025",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "TbkPiKZo4_",
@@ -3939,7 +4075,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "iTM_GSyQfc",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_025",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "iTM_GSyQfc",
@@ -3984,7 +4122,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "6YcR1IjGwv",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_025",
+                          "emoteLevel":  5
                       },
                       {
                           "guid":  "6YcR1IjGwv",
@@ -3999,7 +4139,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_025",
+                          "emoteLevel":  6
                       },
                       {
                           "guid":  "gxKDvQ1Y7Y",
@@ -4014,7 +4156,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_025",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "mER3wV9EJJ",
@@ -4044,7 +4188,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_025",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "涙ぐむ光坑夫",
@@ -4236,7 +4382,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "iY3gPOTOnR",
                           "ne":  "0Aq6RVbbi0",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_002",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "0Aq6RVbbi0",
@@ -4296,7 +4444,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "tYUfY38N9Z",
                           "ne":  "UXd_XSAZUA",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_002",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "UXd_XSAZUA",
@@ -4341,7 +4491,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_002",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "zd4yUax_05",
@@ -4371,7 +4523,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_002",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "指差すキャンドル職人",
@@ -4405,7 +4559,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "xW4oId07rV",
                           "ne":  "LRY_ZoQvcH",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_003",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "LRY_ZoQvcH",
@@ -4465,7 +4621,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "cxpWOsHdBb",
                           "ne":  "Hqh9aiwPyR",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_003",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Hqh9aiwPyR",
@@ -4510,7 +4668,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_003",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "3W0aBg2-2w",
@@ -4540,7 +4700,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_003",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "先導する星読み",
@@ -4574,7 +4736,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "uBTtfXIo3R",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_004",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "uBTtfXIo3R",
@@ -4634,7 +4798,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "nxnUPYsEYd",
                           "ne":  "9q18dSQYOe",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_004",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "9q18dSQYOe",
@@ -4679,7 +4845,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_004",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "fyeV_UEQqv",
@@ -4709,7 +4877,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_004",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "固辞する航行者",
@@ -4916,7 +5086,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "nKWBdttHP9",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_032",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "nKWBdttHP9",
@@ -4961,7 +5133,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "XXJclypUf4",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_032",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "XXJclypUf4",
@@ -5036,7 +5210,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_032",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "_nShwueLTL",
@@ -5066,7 +5242,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_032",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "逆立ちする怖いもの知らず",
@@ -5209,7 +5387,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "nPTdUKSZmz",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_033",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "nPTdUKSZmz",
@@ -5269,7 +5449,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "bq5WRWB6dP",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_033",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "bq5WRWB6dP",
@@ -5314,7 +5496,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_033",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "RjKyznGG3D",
@@ -5344,7 +5528,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_033",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "宙返りをする優勝者",
@@ -5378,7 +5564,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "a4Jot2Cc24",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_035",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "a4Jot2Cc24",
@@ -5438,7 +5626,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "39u42Vtm9Y",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_035",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "39u42Vtm9Y",
@@ -5483,7 +5673,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_035",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "O9WmdPbNY4",
@@ -5513,7 +5705,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_035",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "応援する観客",
@@ -5547,7 +5741,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "M-czyi1tI8",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_034",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "M-czyi1tI8",
@@ -5607,7 +5803,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "y7UP-ueb3W",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_034",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "y7UP-ueb3W",
@@ -5652,7 +5850,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_034",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "bxcXHiYYHy",
@@ -5682,7 +5882,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_034",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "お辞儀をするメダリスト",
@@ -5979,7 +6181,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "CPS5oF5KcY",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_058",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "CPS5oF5KcY",
@@ -6039,7 +6243,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "byzlaZQ4vb",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_058",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "byzlaZQ4vb",
@@ -6084,7 +6290,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_058",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "58xq6L0f9S",
@@ -6114,7 +6322,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_058",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "念動力の使い手",
@@ -6148,7 +6358,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "mWYCAelmmO",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_059",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "mWYCAelmmO",
@@ -6208,7 +6420,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "jg8AciMyvo",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_059",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "jg8AciMyvo",
@@ -6253,7 +6467,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_059",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "nJx_sgAgZh",
@@ -6283,7 +6499,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_059",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "瞑想する修道士",
@@ -6595,7 +6813,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "_Oqos-1eh6",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_060",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "_Oqos-1eh6",
@@ -6655,7 +6875,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "5X13lR92ox",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_060",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "5X13lR92ox",
@@ -6730,7 +6952,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_060",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "ECfXI2TTxQ",
@@ -6760,7 +6984,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_060",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "祈る侍者",
@@ -7072,7 +7298,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "kLaBdog9Gv",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_080",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "kLaBdog9Gv",
@@ -7132,7 +7360,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "L5Cgddxe9A",
                           "ne":  "jQyyD2GWGL",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_080",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "jQyyD2GWGL",
@@ -7207,7 +7437,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_080",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "TtM_--yR1L",
@@ -7237,7 +7469,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_080",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "繊細な漁師",
@@ -7271,7 +7505,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "1XHkKL4Bkq",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_077",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "1XHkKL4Bkq",
@@ -7331,7 +7567,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "lCOwXBBIQm",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_077",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "lCOwXBBIQm",
@@ -7391,7 +7629,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_077",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "_CqXlQmb6y",
@@ -7421,7 +7661,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_077",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "動じない提督",
@@ -7455,7 +7697,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "c_7sjkmC_W",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_079",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "c_7sjkmC_W",
@@ -7515,7 +7759,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "lTQoGcB54y",
                           "ne":  "dst69eXq6p",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_079",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "dst69eXq6p",
@@ -7590,7 +7836,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_079",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "RoLy5a6css",
@@ -7620,7 +7868,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_079",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "おっちょこちょいな水夫長",
@@ -7654,7 +7904,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "ipWgIyhfvJ",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_078",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "ipWgIyhfvJ",
@@ -7714,7 +7966,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "5XT98pJaH-",
                           "ne":  "yAQp1Zq8Gp",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_078",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "yAQp1Zq8Gp",
@@ -7789,7 +8043,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_078",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "lTD1SdkFnL",
@@ -7819,7 +8075,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_078",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "豪快に笑う砲手",
@@ -8202,7 +8460,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "D-vr8xTiUU",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_031",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "D-vr8xTiUU",
@@ -8262,7 +8522,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "OAgX8bZScC",
                           "ne":  "YRMhp-i7l9",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_031",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "YRMhp-i7l9",
@@ -8322,7 +8584,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_031",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "M9lOPMur5v",
@@ -8352,7 +8616,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_031",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "とまどう植物学者",
@@ -8386,7 +8652,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Y_j-M-8SrY",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_007",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "Y_j-M-8SrY",
@@ -8446,7 +8714,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "u1N0obm4FA",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_007",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "u1N0obm4FA",
@@ -8506,7 +8776,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_007",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "lskv4vjP3G",
@@ -8536,7 +8808,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_007",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "したり顔の生徒",
@@ -8570,7 +8844,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "HP_nB8HsT7",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_030",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "HP_nB8HsT7",
@@ -8630,7 +8906,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "94WMh6rPgV",
                           "ne":  "TivaP-uRSB",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_030",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "TivaP-uRSB",
@@ -8705,7 +8983,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_030",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "4JAIsJqB25",
@@ -8735,7 +9015,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_030",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "臆病な見習い士官",
@@ -8769,7 +9051,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "H2ordxQVtI",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_057",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "H2ordxQVtI",
@@ -8829,7 +9113,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "HR9qobAfIk",
                           "ne":  "QdZ37M7Ukj",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_057",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "QdZ37M7Ukj",
@@ -8889,7 +9175,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_057",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "73Zv6w30RW",
@@ -8919,7 +9207,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_057",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "行進する冒険家",
@@ -8953,7 +9243,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "feB8vYQ7ie",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_018",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "feB8vYQ7ie",
@@ -9013,7 +9305,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "AIK_IYhApk",
                           "ne":  "Zv8GqqGGE8",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_018",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Zv8GqqGGE8",
@@ -9088,7 +9382,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_018",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "blPB-LHrla",
@@ -9118,7 +9414,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_018",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "含み笑いのスカウト",
@@ -9152,7 +9450,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "gFSRL8z8O9",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_068",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "gFSRL8z8O9",
@@ -9212,7 +9512,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "ol_6jIAK2A",
                           "ne":  "vdODOqIoTr",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_068",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "vdODOqIoTr",
@@ -9272,7 +9574,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_068",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "uJF36JZhXJ",
@@ -9302,7 +9606,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_068",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "夢見がちな森の民",
@@ -9426,7 +9732,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "veie6FnVuN",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_088",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "veie6FnVuN",
@@ -9456,7 +9764,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "36Q_ELFpNX",
                           "ne":  "f32HNPZ1IR",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_087",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "f32HNPZ1IR",
@@ -9471,7 +9781,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "eMCH9as63S",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_087",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "eMCH9as63S",
@@ -9486,7 +9798,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_087",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "36Q_ELFpNX",
@@ -9516,7 +9830,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "MayY839V9U",
                           "ne":  "OIIjkpk_yW",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_089",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "OIIjkpk_yW",
@@ -9531,7 +9847,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "W0uc6SOBOe",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_089",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "W0uc6SOBOe",
@@ -9546,7 +9864,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_089",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "MayY839V9U",
@@ -9651,7 +9971,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_089",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "_7_oCjYRa0",
@@ -9681,7 +10003,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_087",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "XgfMGuxq0E",
@@ -9696,7 +10020,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "rkBcVFRxvv",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_088",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "rkBcVFRxvv",
@@ -9711,7 +10037,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_088",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "x-UTXoKjbT",
@@ -9726,7 +10054,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_088",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "AURORAの季節の案内人",
@@ -9760,7 +10090,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "5BQGw5Xrbw",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_083",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "5BQGw5Xrbw",
@@ -9820,7 +10152,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "IoBUHFqxGf",
                           "ne":  "nz2KWC-Rjr",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_083",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "nz2KWC-Rjr",
@@ -9895,7 +10229,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_083",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "k6lJbkSkZB",
@@ -9925,7 +10261,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_083",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "駆けゆく旅人",
@@ -9959,7 +10297,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "IIYWtvBsbm",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_084",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "IIYWtvBsbm",
@@ -10019,7 +10359,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "x50M2zVBo5",
                           "ne":  "rHGruQYUPC",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_084",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "rHGruQYUPC",
@@ -10094,7 +10436,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_084",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "ljaQYkNBXA",
@@ -10124,7 +10468,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_084",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "覚醒の採掘者",
@@ -10158,7 +10504,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "FIULC_h36U",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_085",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "FIULC_h36U",
@@ -10218,7 +10566,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "30ibpe-ebS",
                           "ne":  "l1tlxcxOcD",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_085",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "l1tlxcxOcD",
@@ -10293,7 +10643,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_085",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "5-3Ul0gsAZ",
@@ -10323,7 +10675,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_085",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "慈愛の戦士",
@@ -10357,7 +10711,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Ds8hPbyKNe",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_086",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "Ds8hPbyKNe",
@@ -10417,7 +10773,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Gq4gwUG1lp",
                           "ne":  "LbQhQ9LOCC",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_086",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "LbQhQ9LOCC",
@@ -10492,7 +10850,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_086",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "f_TdyyE-Ye",
@@ -10522,7 +10882,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_086",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "希望の君",
@@ -10605,7 +10967,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Xl5g8XcvUL",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_038",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "Xl5g8XcvUL",
@@ -10635,7 +10999,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "401aTkTgvR",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_038",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "401aTkTgvR",
@@ -10695,7 +11061,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_038",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "7yDgE-ZaYf",
@@ -10725,7 +11093,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_038",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "音と舞う幼子",
@@ -10759,7 +11129,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "69VvLUz4az",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_039",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "69VvLUz4az",
@@ -10789,7 +11161,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "lWnQ_33zmQ",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_039",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "lWnQ_33zmQ",
@@ -10849,7 +11223,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_039",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "qYYEFBTKLx",
@@ -10879,7 +11255,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_039",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "紙ふぶき好きのいとこ",
@@ -10913,7 +11291,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "kBkp5IqaXk",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_063",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "kBkp5IqaXk",
@@ -10943,7 +11323,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Z5In13pomZ",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_063",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Z5In13pomZ",
@@ -11003,7 +11385,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_063",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "eq4_50nXIl",
@@ -11033,7 +11417,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_063",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "ぽんぽんする若者",
@@ -11236,7 +11622,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "UABHUtl23_",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "UABHUtl23_",
@@ -11266,7 +11654,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "V35ap9LXqW",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "V35ap9LXqW",
@@ -11326,7 +11716,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "nR9kma-b3o",
@@ -11356,7 +11748,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       }
                   ],
         "nameJa":  "訴えかける親",
@@ -11390,7 +11784,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "YVdlQYd3v2",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "YVdlQYd3v2",
@@ -11510,7 +11906,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "6ZTmTtOOjY",
@@ -11634,7 +12032,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "EPGcRKpLYm",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_107",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "EPGcRKpLYm",
@@ -11664,7 +12064,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "JkIfAwP9AB",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_107",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "JkIfAwP9AB",
@@ -11814,7 +12216,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_107",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "4ZLWhKCEEl",
@@ -11844,7 +12248,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_107",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "MH3rLTidMd",
@@ -12231,7 +12637,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "z2F-sddWqE",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_108",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "z2F-sddWqE",
@@ -12261,7 +12669,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "YlBpNbBRCQ",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_108",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "YlBpNbBRCQ",
@@ -12351,7 +12761,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_108",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "9ByajEr0dH",
@@ -12381,7 +12793,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_108",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "高貴なぽんぽんする若者",
@@ -12996,7 +13410,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ボール回し",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_116",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "4b7FEEFQ5L",
@@ -13071,7 +13487,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ボール回し",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_116",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "-Qbi6bt8kX",
@@ -13086,7 +13504,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ボール回し",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_116",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "7qmmAj3Y38",
@@ -13146,7 +13566,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ボール回し",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_116",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "JSSGmDIdXl",
@@ -13209,7 +13631,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ブレイクダンス",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_115",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "0_KLKqzV6b",
@@ -13284,7 +13708,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ブレイクダンス",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_115",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "RtvTbAXIpp",
@@ -13299,7 +13725,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ブレイクダンス",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_115",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "_T8EMvA7Bc",
@@ -13359,7 +13787,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ブレイクダンス",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_115",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "1OtzQ9hLyr",
@@ -13407,7 +13837,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "メモする",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_117",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "eKvMLEttxW",
@@ -13482,7 +13914,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "メモする",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_117",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "QvNkzI_EpY",
@@ -13497,7 +13931,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "メモする",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_117",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Kj7M1cCihe",
@@ -13557,7 +13993,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "メモする",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_117",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "fUijpYjsJG",
@@ -13620,7 +14058,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "いいね",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_114",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "Ynnf3Ln5AU",
@@ -13695,7 +14135,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "いいね",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_114",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "LCsiuE8ktj",
@@ -13710,7 +14152,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "いいね",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_114",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "W_0I4DSv-4",
@@ -13770,7 +14214,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "いいね",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_114",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "jttR7EfxcD",
@@ -14136,7 +14582,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "描く",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_121",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "emRApU6qez",
@@ -14211,7 +14659,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "描く",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_121",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "pWIHX5Eo_C",
@@ -14226,7 +14676,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "描く",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_121",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "ktxx-J5veo",
@@ -14286,7 +14738,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "描く",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_121",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "WLsuK641k9",
@@ -14349,7 +14803,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "落胆",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_118",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "ory0TGRAmy",
@@ -14424,7 +14880,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "落胆",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_118",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "ueEfk_mQ-6",
@@ -14439,7 +14897,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "落胆",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_118",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "r-aSAXFJjN",
@@ -14499,7 +14959,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "落胆",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_118",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "q8OX-dnLWV",
@@ -14562,7 +15024,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ゆっくり歩く",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_119",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "EScujYnM3h",
@@ -14622,7 +15086,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ゆっくり歩く",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_119",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "4IybQBIxK4",
@@ -14652,7 +15118,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ゆっくり歩く",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_119",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "-8gANlhJXC",
@@ -14727,7 +15195,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "ゆっくり歩く",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_119",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "jhdbFcGjVP",
@@ -14775,7 +15245,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "浴びる",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_120",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "Q70f27I4mL",
@@ -14850,7 +15322,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "浴びる",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_120",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "eMw9z0ATyM",
@@ -14865,7 +15339,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "浴びる",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_120",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Hw5YPRVPOx",
@@ -14925,7 +15401,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "浴びる",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_120",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "xlk2Lqs_qo",
@@ -15217,7 +15695,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "YcnP_W3Y-8",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "YcnP_W3Y-8",
@@ -15322,7 +15802,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "HXOqjx-eAI",
@@ -15386,7 +15868,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "4jPhG-WDu-",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_045",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "4jPhG-WDu-",
@@ -15416,7 +15900,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "7KoJNQ-it8",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_045",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "7KoJNQ-it8",
@@ -15506,7 +15992,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_045",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "87X64LZyO4",
@@ -15536,7 +16024,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_045",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "旋舞の師匠",
@@ -15570,7 +16060,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Gf22A_pZB9",
                           "ne":  "YwRt2zAKCs",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_029",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "YwRt2zAKCs",
@@ -15645,7 +16137,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "TXUHpVg352",
                           "ne":  "R5Oken06JZ",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_029",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "R5Oken06JZ",
@@ -15720,7 +16214,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_029",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "CEDxQDFuH4",
@@ -15750,7 +16246,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_029",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "そっと覗く郵便屋",
@@ -15784,7 +16282,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "oRsSn4tuWY",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_044",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "oRsSn4tuWY",
@@ -15814,7 +16314,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "-MWLVfdTk0",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_044",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "-MWLVfdTk0",
@@ -15904,7 +16406,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_044",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "IdhxAwjyiU",
@@ -15934,7 +16438,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_044",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "ハグ好きの隠者",
@@ -16133,7 +16639,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "uiFFvOV26K",
@@ -16148,7 +16656,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "GpBPsEWVPr",
@@ -17215,7 +17725,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "reGOXfU8aZ",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_006",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "reGOXfU8aZ",
@@ -17275,7 +17787,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "SFYjN4kDyC",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_006",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "SFYjN4kDyC",
@@ -17320,7 +17834,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_006",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "xe8U6BjJZN",
@@ -17350,7 +17866,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_006",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "うなずく壁画師",
@@ -17384,7 +17902,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "VvKaxiwGqU",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_027",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "VvKaxiwGqU",
@@ -17444,7 +17964,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "3Sb5my-oqj",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_027",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "3Sb5my-oqj",
@@ -17504,7 +18026,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_027",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "IAL8W8rNyI",
@@ -17534,7 +18058,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_027",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "無頓着な錬金術師",
@@ -17568,7 +18094,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "9dv2rIFzKb",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_042",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "9dv2rIFzKb",
@@ -17598,7 +18126,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Ci0-1t5e7c",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_042",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Ci0-1t5e7c",
@@ -17658,7 +18188,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_042",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "f6w8GBTG_R",
@@ -17688,7 +18220,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_042",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "蟹歩きの名人",
@@ -17722,7 +18256,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "eD3uA0eVYo",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_054",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "eD3uA0eVYo",
@@ -17752,7 +18288,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "A3ZfdpXZ8V",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_054",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "A3ZfdpXZ8V",
@@ -17812,7 +18350,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_054",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "f6k36cK2bc",
@@ -17842,7 +18382,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_054",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "こけおどしの農家",
@@ -17876,7 +18418,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Wb9KsxWM-q",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_065",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "Wb9KsxWM-q",
@@ -17906,7 +18450,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "wRfaa5HvsN",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_065",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "wRfaa5HvsN",
@@ -17966,7 +18512,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_065",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "OQMnD3sSDy",
@@ -17996,7 +18544,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_065",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "居眠りする大工",
@@ -18030,7 +18580,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "RCsi7aHeOp",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "RCsi7aHeOp",
@@ -18165,7 +18717,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "IJlo8MvkH2",
@@ -18180,7 +18734,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "4XFb4Qvt45",
@@ -18210,7 +18766,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "rOLHJjfv8u",
@@ -18503,7 +19061,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "fzoVHZjkGH",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_076",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "fzoVHZjkGH",
@@ -18548,7 +19108,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "vT9GL0PvY9",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_076",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "vT9GL0PvY9",
@@ -18638,7 +19200,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_076",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "JxydMFtc5M",
@@ -18683,7 +19247,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_076",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "快活な誘導手",
@@ -19055,7 +19621,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "GF20e2yheu",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "GF20e2yheu",
@@ -19100,7 +19668,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "BN7VKDpf5J",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "BN7VKDpf5J",
@@ -19190,7 +19760,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "YUWotnJRgW",
@@ -19235,7 +19807,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       }
                   ],
         "nameJa":  "腕利きの工匠",
@@ -19412,7 +19986,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "jxeHcPYjY0",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_061",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "jxeHcPYjY0",
@@ -19442,7 +20018,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "dC_YiXQfL7",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_061",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "dC_YiXQfL7",
@@ -19487,7 +20065,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_061",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "-pGSJXDwp4",
@@ -19517,7 +20097,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_061",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "屈伸する導師",
@@ -19551,7 +20133,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "vRo8L9GdZ_",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_026",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "vRo8L9GdZ_",
@@ -19611,7 +20195,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "qJF6NgROpf",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_026",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "qJF6NgROpf",
@@ -19671,7 +20257,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_026",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "sOnWNvfLdO",
@@ -19701,7 +20289,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_026",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "挑戦的な表現者",
@@ -19735,7 +20325,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "xXlRRtVGcA",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_036",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "xXlRRtVGcA",
@@ -19795,7 +20387,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "JuntDWw171",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_036",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "JuntDWw171",
@@ -19840,7 +20434,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_036",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "CckgWQWh6g",
@@ -19870,7 +20466,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_036",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "飛び跳ねる舞踏家",
@@ -19904,7 +20502,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "57DfqdDRwz",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_051",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "57DfqdDRwz",
@@ -19964,7 +20564,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "nNQ1XJmGVS",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_051",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "nNQ1XJmGVS",
@@ -20024,7 +20626,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_051",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "o6dm1idkZ_",
@@ -20054,7 +20658,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_051",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "敬礼する守護者",
@@ -20088,7 +20694,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "U4cbOtklI7",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_052",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "U4cbOtklI7",
@@ -20148,7 +20756,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "kz_Uu8Kf4o",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_052",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "kz_Uu8Kf4o",
@@ -20193,7 +20803,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_052",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "Gb69eEddzM",
@@ -20223,7 +20835,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_052",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "礼を尽くす祈祷師",
@@ -20635,7 +21249,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "Vjl-c7o7h6",
@@ -20695,7 +21311,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "xhgKyOuSsa",
@@ -20710,7 +21328,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "FEMmw6bRCU",
@@ -20770,7 +21390,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "x5PPWU-Ptm",
@@ -20833,7 +21455,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "n7ajf0aV_S",
@@ -20893,7 +21517,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "U9VxMLet4v",
@@ -20908,7 +21534,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "aYbFbqvxUf",
@@ -20968,7 +21596,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "mdU1qA2K1q",
@@ -21031,7 +21661,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "unuoUv0VV3",
@@ -21106,7 +21738,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "V5BuZfqOgq",
@@ -21121,7 +21755,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "cFoFHoAQKq",
@@ -21181,7 +21817,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  null,
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "Fgi9qitlWA",
@@ -21244,7 +21882,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "小さく拍手",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_113",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "UJADhQXd7g",
@@ -21304,7 +21944,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "小さく拍手",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_113",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "p52_wLIKYr",
@@ -21319,7 +21961,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "小さく拍手",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_113",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "YJ9gjrTo37",
@@ -21379,7 +22023,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "小さく拍手",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_113",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "Zm-WHQKxek",
@@ -21491,7 +22137,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "ODxxK4SEMI",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "ODxxK4SEMI",
@@ -21566,7 +22214,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "3TCw5D287c",
@@ -21615,7 +22265,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "pdmmr3uAZM",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "pdmmr3uAZM",
@@ -21690,7 +22342,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "t8utQHFcst",
@@ -21893,7 +22547,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "ncgdVwfIBO",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_037",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "ncgdVwfIBO",
@@ -21923,7 +22579,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "xuf6lUuTxt",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_037",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "xuf6lUuTxt",
@@ -21968,7 +22626,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_037",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "l2sFHiW3q9",
@@ -21998,7 +22658,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_037",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "くるりと舞う優勝者",
@@ -22201,7 +22863,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "GZAvBUR0HX",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_062",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "GZAvBUR0HX",
@@ -22231,7 +22895,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "RLPg0L8Q_h",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_062",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "RLPg0L8Q_h",
@@ -22276,7 +22942,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_062",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "e33WYNczNB",
@@ -22306,7 +22974,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_062",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "静けさを望む光学者",
@@ -22703,7 +23373,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "海月ダンス",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_111",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "3eKQmuhjHr",
@@ -22763,7 +23435,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "海月ダンス",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_111",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "D0-HhlXQVj",
@@ -22778,7 +23452,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "海月ダンス",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_111",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "prk2gfD3pI",
@@ -22838,7 +23514,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "海月ダンス",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_111",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "Ja4JZSomlz",
@@ -22901,7 +23579,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "くらくら",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_112",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "5OWU4sA_1n",
@@ -22961,7 +23641,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "くらくら",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_112",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "m3Ps6zvkmm",
@@ -22976,7 +23658,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "くらくら",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_112",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "CxQ0X3_YSC",
@@ -23036,7 +23720,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "くらくら",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_112",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "eof4oTtioe",
@@ -23099,7 +23785,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "レースフラッグ",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_109",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "6zEZ4XnQla",
@@ -23174,7 +23862,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "レースフラッグ",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_109",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "eM6_zetEHz",
@@ -23189,7 +23879,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "レースフラッグ",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_109",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "5zWplH6ONw",
@@ -23249,7 +23941,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "レースフラッグ",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_109",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "UhtERrRxFD",
@@ -23312,7 +24006,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "飛行ごっこ",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_110",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "QoePomtpXy",
@@ -23372,7 +24068,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "飛行ごっこ",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_110",
+                          "emoteLevel":  2
                       },
                       {
                           "guid":  "-ybUb0rvGy",
@@ -23387,7 +24085,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "飛行ごっこ",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_110",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "vhNqS5iP-D",
@@ -23447,7 +24147,9 @@ const SPIRIT_TREE_DATA = [
                           "itemNameJa":  "飛行ごっこ",
                           "itemType":  "Emote",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_110",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "BgNWIscbRy",
@@ -23982,7 +24684,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "0PHcnV_j-G",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "0PHcnV_j-G",
@@ -24132,7 +24836,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       }
                   ],
         "nameJa":  "頼もしい自然保護官",
@@ -24166,7 +24872,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "nPlBrW84qt",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_097",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "nPlBrW84qt",
@@ -24196,7 +24904,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "K_rVAvT6-U",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_097",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "K_rVAvT6-U",
@@ -24286,7 +24996,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_097",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "H-YVKJwuMK",
@@ -24316,7 +25028,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_097",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "上機嫌な地質学者",
@@ -24350,7 +25064,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "yLL5TgdWma",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_098",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "yLL5TgdWma",
@@ -24395,7 +25111,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "n_z6MLECA6",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_098",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "n_z6MLECA6",
@@ -24455,7 +25173,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_098",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "CkGWQjiM7G",
@@ -24500,7 +25220,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_098",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "節制の修行者",
@@ -24913,7 +25635,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "3TsBNz8Trr",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_103",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "3TsBNz8Trr",
@@ -24928,7 +25652,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_103",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "wionXk5YSK",
@@ -24958,7 +25684,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "21cqactLSD",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_103",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "21cqactLSD",
@@ -24973,7 +25701,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_103",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "ムーミンの本",
@@ -26772,7 +27502,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "5c4eEiWyPA",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_100",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "5c4eEiWyPA",
@@ -26817,7 +27549,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Losgq6EGS7",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_100",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Losgq6EGS7",
@@ -26877,7 +27611,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_100",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "cuJ-cN9cNI",
@@ -26922,7 +27658,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_100",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "薬草採集人",
@@ -26956,7 +27694,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "vy42LcfVgL",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_101",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "vy42LcfVgL",
@@ -26986,7 +27726,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "op_OClDINi",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_101",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "op_OClDINi",
@@ -27076,7 +27818,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_101",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "O-9cB13pGo",
@@ -27106,7 +27850,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_101",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "狩人",
@@ -27140,7 +27886,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "3_B5F60qou",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "3_B5F60qou",
@@ -27290,7 +28038,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       }
                   ],
         "nameJa":  "国王",
@@ -27324,7 +28074,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "nq-taG3wQg",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_102",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "nq-taG3wQg",
@@ -27369,7 +28121,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "eU1kzP8PY-",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_102",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "eU1kzP8PY-",
@@ -27459,7 +28213,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_102",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "JGZV3U9Jvu",
@@ -27504,7 +28260,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_102",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "王女",
@@ -27827,7 +28585,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "QhHWbJMuZ4",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_093",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "QhHWbJMuZ4",
@@ -27887,7 +28647,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "L4jUktxTta",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_093",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "L4jUktxTta",
@@ -27947,7 +28709,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_093",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "XBaaCdKLb7",
@@ -27977,7 +28741,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_093",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "風変わりなひとり好き",
@@ -28011,7 +28777,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "u2psXUE0cn",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_094",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "u2psXUE0cn",
@@ -28041,7 +28809,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "3GbtED2nJe",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_094",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "3GbtED2nJe",
@@ -28131,7 +28901,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_094",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "RW0omjIQLq",
@@ -28161,7 +28933,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_094",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "ぐるぐる回るいたずらっ子",
@@ -28195,7 +28969,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Wgvn-yvP06",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_095",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "Wgvn-yvP06",
@@ -28240,7 +29016,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Dz6H0yRGVT",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_095",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Dz6H0yRGVT",
@@ -28300,7 +29078,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_095",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "YALq6maM6b",
@@ -28345,7 +29125,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_095",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "物憂げなとぼとぼ歩き",
@@ -28379,7 +29161,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "jcEka4RBcR",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_096",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "jcEka4RBcR",
@@ -28409,7 +29193,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "pOjomtU0J4",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_096",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "pOjomtU0J4",
@@ -28499,7 +29285,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_096",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "g2OQrkHibV",
@@ -28529,7 +29317,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_096",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "活発すぎる頑張り屋",
@@ -28942,7 +29732,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "i0Zyu5uBAN",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "i0Zyu5uBAN",
@@ -29047,7 +29839,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "4p_wPHpXCU",
@@ -29111,7 +29905,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "sBiNEw-JCf",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_082",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "sBiNEw-JCf",
@@ -29156,7 +29952,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "s_VvBmaGz5",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_082",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "s_VvBmaGz5",
@@ -29246,7 +30044,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_082",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "Qh2KrfM7g_",
@@ -29291,7 +30091,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_082",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "忘れっぽい劇作家",
@@ -29325,7 +30127,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "38uaFs2jEq",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_081",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "38uaFs2jEq",
@@ -29385,7 +30189,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "LbNwO6AMJj",
                           "ne":  "Ndkr6RwhpT",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_081",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Ndkr6RwhpT",
@@ -29460,7 +30266,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_081",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "iNHw9TTNoD",
@@ -29490,7 +30298,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_081",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "のんびり屋の音楽家",
@@ -29524,7 +30334,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "9ZY-N-geou",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "9ZY-N-geou",
@@ -29629,7 +30441,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  null,
+                          "emoteLevel":  null
                       },
                       {
                           "guid":  "6Ofm-167OC",
@@ -29877,7 +30691,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "dQ0U0EKmG0",
                           "ne":  "HhcP-Ie2-B",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_067",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "HhcP-Ie2-B",
@@ -29952,7 +30768,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "aExWaifHkZ",
                           "ne":  "uEjvyPdwr_",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_067",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "uEjvyPdwr_",
@@ -30012,7 +30830,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_067",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "UqbwwqyleJ",
@@ -30042,7 +30862,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_067",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "水の預言者",
@@ -30076,7 +30898,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "OrV0IGBr_7",
                           "ne":  "OQstsD--3N",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_055",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "OQstsD--3N",
@@ -30151,7 +30975,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "D_Jq-_wcAB",
                           "ne":  "Cav6TOePkE",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_055",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Cav6TOePkE",
@@ -30226,7 +31052,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_055",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "WN3vFmdFXn",
@@ -30256,7 +31084,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_055",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "地の預言者",
@@ -30290,7 +31120,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Pc7FIKanez",
                           "ne":  "BE7DFyDfTR",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_066",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "BE7DFyDfTR",
@@ -30365,7 +31197,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "QmCfR94Xgt",
                           "ne":  "_ko0aVcyYG",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_066",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "_ko0aVcyYG",
@@ -30425,7 +31259,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_066",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "5TE_9i_tai",
@@ -30455,7 +31291,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_066",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "風の預言者",
@@ -30489,7 +31327,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "OjVt26pVum",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_056",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "OjVt26pVum",
@@ -30519,7 +31359,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "WRUldGwJY6",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_056",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "WRUldGwJY6",
@@ -30609,7 +31451,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_056",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "XQkNvt-otF",
@@ -30639,7 +31483,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_056",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "火の預言者",
@@ -31022,7 +31868,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "XAKy6Cw7EJ",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_104",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "XAKy6Cw7EJ",
@@ -31067,7 +31915,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "hm7gWreX8F",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_104",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "hm7gWreX8F",
@@ -31187,7 +32037,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_104",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "EiwNbCGhWf",
@@ -31232,7 +32084,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_104",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "光に染まる飛び跳ねる舞踏家",
@@ -31266,7 +32120,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "WhOCWtcvun",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_106",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "WhOCWtcvun",
@@ -31311,7 +32167,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "-IRJrAUsNa",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_106",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "-IRJrAUsNa",
@@ -31431,7 +32289,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_106",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "VOu2EBzHut",
@@ -31476,7 +32336,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_106",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "光に染まる挑戦的な表現者",
@@ -31510,7 +32372,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "hpAaNeBYmt",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_105",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "hpAaNeBYmt",
@@ -31555,7 +32419,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "ok2O4fMX7k",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_105",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "ok2O4fMX7k",
@@ -31675,7 +32541,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_105",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "UkrtPPjkeU",
@@ -31720,7 +32588,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_105",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "光に染まる礼を尽くす祈祷師",
@@ -32223,7 +33093,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "D9E3jEaX2r",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_092",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "D9E3jEaX2r",
@@ -32268,7 +33140,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "JliH0Y6KM2",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_092",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "JliH0Y6KM2",
@@ -32328,7 +33202,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_092",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "cHfZ6rUTzC",
@@ -32373,7 +33249,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_092",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "喪失の初老",
@@ -32407,7 +33285,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "21n-WE2bfP",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_090",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "21n-WE2bfP",
@@ -32467,7 +33347,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Sbkdgjit2A",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_090",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Sbkdgjit2A",
@@ -32542,7 +33424,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_090",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "Mk0-EzDuNp",
@@ -32572,7 +33456,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_090",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "懇願する幼子",
@@ -32606,7 +33492,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "RYMPhdf4SM",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_091",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "RYMPhdf4SM",
@@ -32666,7 +33554,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "p_dz8HU1ha",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_091",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "p_dz8HU1ha",
@@ -32726,7 +33616,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_091",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "uq7sopygBv",
@@ -32756,7 +33648,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_091",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "ぬき足の茶人",
@@ -33808,7 +34702,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "eVSZTd5UOi",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_005",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "eVSZTd5UOi",
@@ -33868,7 +34764,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "JzSPrUMpet",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_005",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "JzSPrUMpet",
@@ -33928,7 +34826,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_005",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "zlZ8PUytxL",
@@ -33958,7 +34858,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_005",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "一座の進行役",
@@ -33992,7 +34894,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "8WTjr99H6h",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_040",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "8WTjr99H6h",
@@ -34022,7 +34926,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "TJyaFQj6PM",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_040",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "TJyaFQj6PM",
@@ -34082,7 +34988,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_040",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "g3QNfhMSJd",
@@ -34112,7 +35020,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_040",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "祝祭の旋舞家",
@@ -34146,7 +35056,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "mG92N4wk5I",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_015",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "mG92N4wk5I",
@@ -34176,7 +35088,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "98ykBCV2y_",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_015",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "98ykBCV2y_",
@@ -34236,7 +35150,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_015",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "Im5frU4TAr",
@@ -34266,7 +35182,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_015",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "うっとりするような旅役者",
@@ -34300,7 +35218,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "XMd3U9mVv3",
                           "ne":  "HKCFeunpJa",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_041",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "HKCFeunpJa",
@@ -34375,7 +35295,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "V8hIRpTbIN",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_041",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "V8hIRpTbIN",
@@ -34435,7 +35357,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_041",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "jaxbzjR2Qx",
@@ -34465,7 +35389,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_041",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "一座の曲芸師",
@@ -34499,7 +35425,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "JdneZVaMk4",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_048",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "JdneZVaMk4",
@@ -34559,7 +35487,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "lK1Lkbn25c",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_048",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "lK1Lkbn25c",
@@ -34619,7 +35549,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_048",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "joq2zmumHE",
@@ -34649,7 +35581,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_048",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "敬意を表す楽師",
@@ -34683,7 +35617,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "DnISBxmDe7",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_064",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "DnISBxmDe7",
@@ -34743,7 +35679,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "iBRvOP-wRU",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_064",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "iBRvOP-wRU",
@@ -34803,7 +35741,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_064",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "fUKkqgT_5y",
@@ -34833,7 +35773,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_064",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "思慮深き座長",
@@ -35389,7 +36331,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "0d3IGPTtMp",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_043",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "0d3IGPTtMp",
@@ -35419,7 +36363,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "c_2VyPXxl3",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_043",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "c_2VyPXxl3",
@@ -35479,7 +36425,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_043",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "I3Txbbp1fr",
@@ -35509,7 +36457,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_043",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "奮い立つ怖いもの知らず",
@@ -35543,7 +36493,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "dl52WiuX1P",
                           "ne":  "QXfBXn8Br4",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_028",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "QXfBXn8Br4",
@@ -35618,7 +36570,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "iHlsffUVPM",
                           "ne":  "blZ-1PxIRQ",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_028",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "blZ-1PxIRQ",
@@ -35678,7 +36632,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_028",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "Yn5_fEhdVo",
@@ -35708,7 +36664,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_028",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "ハイキングする気むずかし屋",
@@ -35742,7 +36700,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "3vh-auI7g-",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_016",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "3vh-auI7g-",
@@ -35772,7 +36732,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "kEwqDUb1Vd",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_016",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "kEwqDUb1Vd",
@@ -35832,7 +36794,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_016",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "D9nryq-CZg",
@@ -35862,7 +36826,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_016",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "感謝する貝殻収集家",
@@ -35896,7 +36862,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "qLg7hG9y5k",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_017",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "qLg7hG9y5k",
@@ -35926,7 +36894,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "hrZ9iranN2",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_017",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "hrZ9iranN2",
@@ -36016,7 +36986,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_017",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "FMEN0Xsvlj",
@@ -36046,7 +37018,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_017",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "くつろぐ日光浴者",
@@ -37229,7 +38203,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "45x2_Is3-A",
                           "ne":  "T7MsXooygn",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_069",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "T7MsXooygn",
@@ -37289,7 +38265,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "MdAIW6woGp",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_069",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "MdAIW6woGp",
@@ -37334,7 +38312,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_069",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "bzyt1YiJGH",
@@ -37364,7 +38344,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_069",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "手招く支配者",
@@ -37398,7 +38380,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "3i6n9NJXD8",
                           "ne":  "SkEBYSIES0",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_070",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "SkEBYSIES0",
@@ -37473,7 +38457,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "Rjoo4AOdEr",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_070",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "Rjoo4AOdEr",
@@ -37518,7 +38504,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_070",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "LazV5TWqlW",
@@ -37548,7 +38536,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_070",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "ご満悦のうぬぼれ屋",
@@ -37582,7 +38572,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "I-lU_52BbS",
                           "ne":  "cZBzpveyXv",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_071",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "cZBzpveyXv",
@@ -37642,7 +38634,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "3o48oH9215",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_071",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "3o48oH9215",
@@ -37687,7 +38681,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_071",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "3ejYrqz78t",
@@ -37717,7 +38713,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_071",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "体をほぐす点燈夫",
@@ -37751,7 +38749,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "qIWkntZPla",
                           "ne":  "UDZIogB4pU",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_072",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "UDZIogB4pU",
@@ -37826,7 +38826,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "33-8QjJtBq",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_072",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "33-8QjJtBq",
@@ -37871,7 +38873,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_072",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "aoObD42UFX",
@@ -37901,7 +38905,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_072",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "うなだれる戦士",
@@ -37935,7 +38941,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "mUIpWHqCXu",
                           "ne":  "plvJ4YbpRw",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_073",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "plvJ4YbpRw",
@@ -37995,7 +39003,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "e3GxJsBmfh",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_073",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "e3GxJsBmfh",
@@ -38040,7 +39050,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_073",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "YXQmNwf1Fa",
@@ -38070,7 +39082,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_073",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "くしゃみする地理学者",
@@ -38104,7 +39118,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "2zc3y5jjfs",
                           "ne":  "VSVKC8YeQi",
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_074",
+                          "emoteLevel":  1
                       },
                       {
                           "guid":  "VSVKC8YeQi",
@@ -38164,7 +39180,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  "k1PQDVocw9",
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_074",
+                          "emoteLevel":  3
                       },
                       {
                           "guid":  "k1PQDVocw9",
@@ -38224,7 +39242,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_074",
+                          "emoteLevel":  4
                       },
                       {
                           "guid":  "5XoSH679Oo",
@@ -38254,7 +39274,9 @@ const SPIRIT_TREE_DATA = [
                           "n":  null,
                           "ne":  null,
                           "itemCatKey":  null,
-                          "itemCostId":  null
+                          "itemCostId":  null,
+                          "emoteId":  "emote_074",
+                          "emoteLevel":  2
                       }
                   ],
         "nameJa":  "星の収集家",
