@@ -185,17 +185,6 @@
     .detail-summary { background: var(--card); border-radius: var(--r); padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 14px; font-size: 12.5px; color: var(--text-2); display: flex; flex-wrap: wrap; gap: 10px 18px; }
     .detail-summary b { color: var(--text); }
     .tier-label { font-size: 12px; font-weight: 700; color: var(--text-2); padding: 12px 2px 6px; }
-    .node-row {
-      display: flex; align-items: center; gap: 10px; background: var(--card); border-radius: var(--r-sm);
-      padding: 10px 12px; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    .node-check { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--sep); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: transparent; }
-    .node-row.checked .node-check { background: var(--green); border-color: var(--green); color: #fff; }
-    .node-icon { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
-    .node-info { flex: 1; min-width: 0; }
-    .node-name { font-size: 13.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .node-name.no-ja { color: var(--text-2); font-style: italic; }
-    .node-costs { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
     .cost-chip { font-size: 10.5px; font-weight: 700; padding: 3px 7px; border-radius: 999px; white-space: nowrap; }
     .cost-c { background: var(--orange-bg); color: #B8740A; }
     .cost-h { background: rgba(255,45,85,0.10); color: #D6294F; }
@@ -203,7 +192,33 @@
     .cost-sh { background: rgba(255,45,85,0.10); color: #D6294F; }
     .cost-ac { background: var(--blue-bg); color: var(--blue); }
     .cost-ec { background: rgba(175,82,222,0.10); color: #8A3FC0; }
-    .wing-badge { font-size: 12px; }
+
+    /* ── ツリー図（本家のような枝分かれ構造） ── */
+    .tree-scroll { overflow-x: auto; margin: 0 -16px 6px; padding: 4px 16px 10px; }
+    .tree-canvas { position: relative; margin: 0 auto; }
+    .tree-lines { position: absolute; top: 0; left: 0; pointer-events: none; }
+    .tree-node-wrap { position: absolute; display: flex; flex-direction: column; align-items: center; }
+    .tree-node-circle-holder { position: relative; }
+    .tree-node {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--card); border: 2.5px solid var(--sep);
+      display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .tree-node.checked { background: var(--green); border-color: var(--green-d); color: #fff; }
+    .tree-node-icon { line-height: 1; }
+    .tree-node-wingtag { position: absolute; top: -6px; right: -4px; font-size: 13px; }
+    .tree-node-label {
+      font-size: 10px; color: var(--text); text-align: center; margin-top: 3px; line-height: 1.25;
+      max-width: 74px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    }
+    .tree-node-label.no-ja { color: var(--text-2); font-style: italic; }
+    .tree-node-cost { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; margin-top: 2px; max-width: 78px; }
+    .tree-node-cost .cost-chip { font-size: 8.5px; padding: 1.5px 4px; }
+
+    /* ── 段階ツリー（恒常/長老精霊のフレンドシップレベル） ── */
+    .tier-block { margin-bottom: 4px; }
+    .tier-grid-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
+    .tier-grid-row .tree-node-wrap { position: static; }
 
     footer { text-align: center; font-size: 11.5px; color: var(--text-3); padding: 34px 16px 12px; line-height: 1.9; }
     footer a { color: var(--green-d); text-decoration: none; }
@@ -535,6 +550,21 @@ function syncWingBuff(spirit) {
 }
 
 /* ================================================================
+   item（アイテム所持管理）の所持アイテムと自動同期
+   （ノード解放 = そのアイテムをitem側で「所持」扱いにする）
+   ================================================================ */
+function syncItemOwned(node, nowUnlocked) {
+  if (!node.itemCatKey || !node.itemCostId) return;
+  const key = nsKey('gameItems_' + node.itemCatKey);
+  let data;
+  try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) { data = {}; }
+  if (!data.itemOwned) data.itemOwned = {};
+  if (nowUnlocked) { data.itemOwned[node.itemCostId] = true; }
+  else { delete data.itemOwned[node.itemCostId]; }
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+/* ================================================================
    ノードの解放／解除トグル（同期処理込み）
    ================================================================ */
 function toggleNode(spiritGuid, nodeGuid) {
@@ -556,6 +586,9 @@ function toggleNode(spiritGuid, nodeGuid) {
 
   // 羽バフノードならwingsとも同期
   if (node.itemType === 'WingBuff') syncWingBuff(spirit);
+
+  // アイテムカタログと対応が取れているノードならitemの所持アイテムとも同期
+  syncItemOwned(node, nowUnlocked);
 
   renderDetail(spiritGuid);
   renderGrid();
@@ -683,22 +716,122 @@ function closeDetail() {
   currentDetailGuid = null;
 }
 
-function nodeRowHtml(spiritGuid, n) {
+/* ================================================================
+   アイテム種別アイコン（ツリーノード表示用）
+   ================================================================ */
+const NODE_TYPE_ICON = {
+  Call: '📣', Cape: '🧣', Emote: '🕺', FaceAccessory: '👓', Furniture: '🛋️', Hair: '💇',
+  HairAccessory: '🎀', HeadAccessory: '🎩', Held: '🎈', Mask: '🎭', Music: '🎵',
+  Necklace: '📿', Outfit: '👗', OutfitShoes: '👗', Prop: '🪴', Quest: '📜', Shoes: '👟',
+  Special: '⭐', Spell: '🔮', Stance: '🧎', WingBuff: '🪽'
+};
+
+function treeNodeHtml(spiritGuid, n, style) {
   const unlocked = isNodeUnlocked(n.guid);
   const name = n.itemNameJa || n.itemName || '（アイテム不明）';
   const noJa = !n.itemNameJa;
+  const icon = NODE_TYPE_ICON[n.itemType] || '✨';
   const costChips = Object.keys(n.cost || {}).map(k =>
     `<span class="cost-chip cost-${k}">${COST_ICON[k] || ''}${n.cost[k]}</span>`
   ).join('');
-  const wingBadge = n.itemType === 'WingBuff' ? '<span class="wing-badge" title="羽トラッカーと同期されます">🪽</span>' : '';
+  const wingTag = n.itemType === 'WingBuff' ? '<span class="tree-node-wingtag" title="羽トラッカーと同期されます">🪽</span>' : '';
   return `
-    <div class="node-row ${unlocked ? 'checked' : ''}" onclick="toggleNode('${spiritGuid}','${n.guid}')">
-      <div class="node-check">${unlocked ? '✓' : ''}</div>
-      <div class="node-info">
-        <div class="node-name ${noJa ? 'no-ja' : ''}">${escapeHtml(name)} ${wingBadge}</div>
+    <div class="tree-node-wrap" style="${style || ''}">
+      <div class="tree-node-circle-holder">
+        <button type="button" class="tree-node ${unlocked ? 'checked' : ''}" onclick="toggleNode('${spiritGuid}','${n.guid}')" title="${escapeHtml(name)}">
+          <span class="tree-node-icon">${unlocked ? '✓' : icon}</span>
+        </button>
+        ${wingTag}
       </div>
-      <div class="node-costs">${costChips || '<span class="cost-chip" style="background:var(--sep);color:var(--text-2)">無料</span>'}</div>
+      <div class="tree-node-label ${noJa ? 'no-ja' : ''}">${escapeHtml(name)}</div>
+      <div class="tree-node-cost">${costChips}</div>
     </div>`;
+}
+
+/* ================================================================
+   非段階ツリーの枝分かれレイアウト計算（nw/n/ne から座標を算出）
+   ルートは深さ0、葉ノードは左から順に整数x、親は子の平均x。
+   ================================================================ */
+function computeTreeLayout(s) {
+  const nodeMap = {};
+  s.nodes.forEach(n => nodeMap[n.guid] = n);
+  const root = s.rootNodeGuid;
+  if (!root || !nodeMap[root]) return null;
+
+  const depthOf = {}, xOf = {}, parentOf = {};
+  let nextLeafX = 0;
+  function childrenOf(n) { return [n.nw, n.n, n.ne].filter(g => g && nodeMap[g]); }
+  function assign(guid, depth) {
+    depthOf[guid] = depth;
+    const kids = childrenOf(nodeMap[guid]);
+    let x;
+    if (kids.length === 0) {
+      x = nextLeafX; nextLeafX += 1;
+    } else {
+      const xs = kids.map(k => { parentOf[k] = guid; return assign(k, depth + 1); });
+      x = xs.reduce((a, b) => a + b, 0) / xs.length;
+    }
+    xOf[guid] = x;
+    return x;
+  }
+  assign(root, 0);
+  const maxDepth = Math.max(...Object.values(depthOf));
+  return { nodeMap, depthOf, xOf, parentOf, maxDepth, leafCount: Math.max(nextLeafX, 1) };
+}
+
+/* ================================================================
+   本家のようなツリー図（根が下、上に向かって枝分かれ）を描画
+   ================================================================ */
+function renderTreeDiagram(spiritGuid, s) {
+  const layout = computeTreeLayout(s);
+  if (!layout) {
+    return `<div class="tier-grid-row">${s.nodes.map(n => treeNodeHtml(spiritGuid, n, '')).join('')}</div>`;
+  }
+
+  const unitW = 78, unitH = 96, pad = 30, nodeR = 22;
+  const width = layout.leafCount * unitW + pad * 2;
+  const height = (layout.maxDepth + 1) * unitH + pad * 2;
+  const cx = guid => layout.xOf[guid] * unitW + unitW / 2 + pad;
+  const cy = guid => (layout.maxDepth - layout.depthOf[guid]) * unitH + unitH / 2 + pad;
+
+  let lines = '';
+  Object.keys(layout.parentOf).forEach(childGuid => {
+    const p = layout.parentOf[childGuid];
+    lines += `<line x1="${cx(p)}" y1="${cy(p)}" x2="${cx(childGuid)}" y2="${cy(childGuid)}" stroke="var(--sep)" stroke-width="3" />`;
+  });
+
+  const nodesHtml = s.nodes.filter(n => n.guid in layout.xOf).map(n => {
+    const x = cx(n.guid), y = cy(n.guid);
+    return treeNodeHtml(spiritGuid, n, `left:${x - unitW / 2}px; top:${y - nodeR}px; width:${unitW}px;`);
+  }).join('');
+
+  return `
+    <div class="tree-scroll">
+      <div class="tree-canvas" style="width:${width}px; height:${height}px;">
+        <svg class="tree-lines" width="${width}" height="${height}">${lines}</svg>
+        ${nodesHtml}
+      </div>
+    </div>`;
+}
+
+/* ================================================================
+   段階ツリー（恒常/長老精霊のフレンドシップレベル）を段ごとの
+   ミニグリッド（row/col）で描画
+   ================================================================ */
+function renderTieredTree(spiritGuid, s) {
+  const byTier = {};
+  s.nodes.forEach(n => { (byTier[n.tier] ??= []).push(n); });
+  const tierKeys = Object.keys(byTier).map(Number).sort((a, b) => a - b);
+  return tierKeys.map(t => {
+    const byRow = {};
+    byTier[t].forEach(n => { (byRow[n.row] ??= []).push(n); });
+    const rowKeys = Object.keys(byRow).map(Number).sort((a, b) => a - b);
+    const rowsHtml = rowKeys.map(r => {
+      const rowNodes = byRow[r].slice().sort((a, b) => (a.col || 0) - (b.col || 0));
+      return `<div class="tier-grid-row">${rowNodes.map(n => treeNodeHtml(spiritGuid, n, '')).join('')}</div>`;
+    }).join('');
+    return `<div class="tier-block"><div class="tier-label">段 ${t + 1}</div>${rowsHtml}</div>`;
+  }).join('');
 }
 
 function renderDetail(guid) {
@@ -710,18 +843,7 @@ function renderDetail(guid) {
     ? `<img src="${s.imageUrl}" alt="" onerror="this.parentElement.innerHTML='✨'">`
     : '✨';
 
-  let bodyHtml = '';
-  if (s.isTiered) {
-    const byTier = {};
-    s.nodes.forEach(n => { (byTier[n.tier] ??= []).push(n); });
-    const tierKeys = Object.keys(byTier).map(Number).sort((a,b) => a-b);
-    bodyHtml = tierKeys.map(t => `
-      <div class="tier-label">段 ${t + 1}</div>
-      ${byTier[t].map(n => nodeRowHtml(guid, n)).join('')}
-    `).join('');
-  } else {
-    bodyHtml = s.nodes.map(n => nodeRowHtml(guid, n)).join('');
-  }
+  const bodyHtml = s.isTiered ? renderTieredTree(guid, s) : renderTreeDiagram(guid, s);
 
   const revisitNote = s.treeSource === 'revisit'
     ? `<span>🔁 再訪ツリー(${escapeHtml(s.revisitName || '')} / ${escapeHtml(s.revisitDate || '')})</span>`
