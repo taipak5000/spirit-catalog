@@ -1,0 +1,272 @@
+﻿[
+    {
+        "guid":  "U9vUspUuRp",
+        "name":  "Placeholder",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "9VkjVkgKhb",
+        "name":  "Auspicious Visitor",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "dK38RIPIOG",
+        "name":  "Event Staff (IAP)",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "zS4AGUTIgF",
+        "name":  "Event Staff (IGC)",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "aMY1ZPzcEx",
+        "name":  "Days of Summer Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "mAn3DeaZPi",
+        "name":  "Unfettered Love",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "uIbDtVEvkH",
+        "name":  "Days of Love Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "G2seKIqYu1",
+        "name":  "Days of Love IAP Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "8WMnysBWNd",
+        "name":  "Days of Treasure Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "__ouqYVk1e",
+        "name":  "Treasure Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "IqShB-6_rY",
+        "name":  "Days of Bloom Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "pDhJzwjbYD",
+        "name":  "Bloom Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "3M1KSVgf49",
+        "name":  "Days of Nature Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "UDMXqpF36l",
+        "name":  "Nature Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "uPzMm5H7ag",
+        "name":  "Days of Rainbow Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "9eBpHjtudy",
+        "name":  "Days of Rainbow IAP Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "mYOzGrzNHU",
+        "name":  "Anniversary Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "tam_Fpnh1g",
+        "name":  "Anniversary Chibi IAP Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "c9XXzlKzhd",
+        "name":  "Days of Sunlight Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "tXkUX6GU6W",
+        "name":  "Days of Moonlight Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "F6BUqVCHvp",
+        "name":  "Style Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "NbUg5yLpTg",
+        "name":  "Days of Style IAP Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "ihZx_rVl70",
+        "name":  "Mischief Staff (Samantha)",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "TgUgZjfoMI",
+        "name":  "Mischief Staff (Skidmore)",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "smphYk9cPX",
+        "name":  "Mischief Staff (Nat)",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "GzpxxWwGVG",
+        "name":  "Mischief Staff (Yoshi)",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "GwPybX8w0t",
+        "name":  "Samantha clone 42",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "j1UqKci8Hb",
+        "name":  "Days of Feast Staff",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "gDAPHT2NBG",
+        "name":  "Winter Courier",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "TL-SY6cuF4",
+        "name":  "Belonging Ancestor",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "f9Pek497fm",
+        "name":  "Winter Courier",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "L8hK6RLQa_",
+        "name":  "Days of Color Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "8govamcy_2",
+        "name":  "Days of Color IAP Guide",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "NO6tqAn4m3",
+        "name":  "Enchanted Pyrotechnician",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "dC8B9yzwFr",
+        "name":  "Crab of Triumph",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "ycbsRB5D4K",
+        "name":  "Auspicious Visitor",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "tKeCcn57So",
+        "name":  "Aviary Event Store",
+        "type":  "Event",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "ExkE9a7QJ0",
+        "name":  "Office NPC",
+        "type":  "Special",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "Ayoc2XvMTy",
+        "name":  "Office Spirit #1",
+        "type":  "Special",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "izKBXplld6",
+        "name":  "Office Spirit #2",
+        "type":  "Special",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "cpTFBZ-im4",
+        "name":  "Office Spirit #3",
+        "type":  "Special",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "bQCZEuAuZe",
+        "name":  "Office Spirit #4",
+        "type":  "Special",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "MKdRGA66hC",
+        "name":  "Office Spirit #5",
+        "type":  "Special",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "HmibyU0UEG",
+        "name":  "Office Spirit #6",
+        "type":  "Special",
+        "reason":  "no_tree"
+    },
+    {
+        "guid":  "GUwL23XDTb",
+        "name":  "Office Spirit #7",
+        "type":  "Special",
+        "reason":  "no_tree"
+    }
+]
