@@ -1,0 +1,14 @@
+{
+  "name": "精霊ツリー管理",
+  "short_name": "精霊ツリー管理",
+  "description": "全精霊の精霊ツリー・アイテム・コストを一覧・管理できるツール",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F2F2F7",
+  "theme_color": "#34C759",
+  "icons": [
+    { "src": "icons/app-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/app-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

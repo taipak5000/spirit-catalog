@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/app-icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="精霊ツリー管理">
+  <meta name="theme-color" content="#34C759">
+  <title>精霊ツリー管理 - Sky所持率管理</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #F2F2F7;
+      --card:      #FFFFFF;
+      --sep:       rgba(60,60,67,0.12);
+      --green:     #34C759;
+      --green-d:   #248A3D;
+      --green-bg:  rgba(52,199,89,0.10);
+      --blue:      #007AFF;
+      --blue-bg:   rgba(0,122,255,0.08);
+      --orange:    #FF9500;
+      --orange-bg: rgba(255,149,0,0.10);
+      --red:       #FF3B30;
+      --text:      #1C1C1E;
+      --text-2:    #8E8E93;
+      --text-3:    #C7C7CC;
+      --r:         16px;
+      --r-sm:      10px;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    a { text-decoration:none; color:inherit; -webkit-tap-highlight-color:transparent; }
+    button { cursor:pointer; border:none; background:none; font-family:inherit; }
+    input, select { font-family:inherit; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 60px;
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(242,242,247,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 0.5px solid var(--sep); padding: 14px 20px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-title { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+
+    .sidebar-toggle-btn {
+      background: var(--card); border: 1px solid var(--sep); border-radius: var(--r-sm);
+      padding: 6px 12px; font-size: 13px; font-weight: 600; color: var(--text);
+      display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    @media (min-width: 850px) { .sidebar-toggle-btn { visibility: hidden; } }
+
+    .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 499; }
+    .sidebar-overlay.show { display: block; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .app-layout { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 850px) { .app-layout { max-width: 960px; display: flex; gap: 20px; align-items: flex-start; } }
+    .wrap { flex: 1; min-width: 0; }
+
+    .sidebar {
+      width: 200px; flex-shrink: 0; position: sticky; top: 58px;
+      background: var(--card); border-radius: var(--r); padding: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07); display: none; margin-top: 22px;
+    }
+    @media (min-width: 850px) { .sidebar { display: block; } }
+    .sidebar.sidebar-open {
+      display: flex !important; flex-direction: column; position: fixed; top: 0; left: 0;
+      height: 100%; width: 240px; z-index: 500; overflow-y: auto; margin-top: 0;
+      border-radius: 0 12px 12px 0; box-shadow: 4px 0 24px rgba(0,0,0,0.2);
+    }
+    .sidebar-close-btn {
+      background: none; border: none; font-size: 22px; cursor: pointer;
+      color: var(--text-2); padding: 0; line-height: 1; flex-shrink: 0; display: none;
+    }
+    .sidebar.sidebar-open .sidebar-close-btn { display: block; }
+    .sidebar-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .sidebar-section-label { font-size: 11px; font-weight: 700; color: var(--text-2); text-transform: uppercase; }
+    .sidebar-nav-link {
+      display: flex; align-items: center; gap: 9px; padding: 9px 12px; border-radius: var(--r-sm);
+      color: var(--text); font-size: 13.5px; font-weight: 500; margin-bottom: 2px;
+      width: 100%; box-sizing: border-box;
+    }
+    .sidebar-nav-link:hover { background: var(--bg); }
+    .sidebar-nav-link.current-tool { background: var(--green-bg); color: var(--green-d); font-weight: 700; }
+
+    /* ── プロフィールバー ── */
+    .pf-bar {
+      max-width: 100%; margin: 12px 0 0; background: var(--card); border: 1px solid var(--sep);
+      border-radius: var(--r-sm); padding: 10px 14px; font-size: 13px; color: var(--text-2);
+      text-align: center; cursor: pointer;
+    }
+    .pf-bar b { color: var(--green-d); font-weight: 700; }
+    .pf-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+      z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    .pf-modal-overlay.open { display: flex; }
+    .pf-modal-card { width: 100%; max-width: 360px; max-height: 80vh; overflow-y: auto;
+      background: var(--card); border-radius: var(--r); padding: 20px; box-sizing: border-box;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+    .pf-modal-card h3 { margin: 0 0 14px; font-size: 16px; color: var(--text); }
+    .pf-row { display: flex; align-items: center; gap: 8px; padding: 10px 4px; border-bottom: 0.5px solid var(--sep); }
+    .pf-row:last-of-type { border-bottom: none; }
+    .pf-row-name { flex: 1; font-size: 14.5px; color: var(--text); cursor: pointer; word-break: break-all; }
+    .pf-row.active .pf-row-name { color: var(--green-d); font-weight: 700; }
+    .pf-icon-btn { background: var(--bg); border: 1px solid var(--sep); color: var(--text-2);
+      border-radius: 6px; padding: 5px 9px; font-size: 13px; cursor: pointer; flex-shrink: 0; }
+    .pf-icon-btn:hover { background: var(--sep); }
+    .pf-add-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .pf-input { flex: 1; min-width: 0; background: var(--bg); border: 1px solid var(--sep); border-radius: 6px;
+      padding: 8px 10px; font-size: 14px; color: var(--text); font-family: inherit; outline: none; box-sizing: border-box; }
+    .pf-add-btn { background: var(--green); color: #fff; border: none; border-radius: 6px; padding: 8px 14px;
+      font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; }
+    .pf-hint { font-size: 11.5px; color: var(--text-2); line-height: 1.5; margin: 12px 0 0; }
+    .pf-close-btn { display: block; width: 100%; margin-top: 16px; background: var(--bg); border: 1px solid var(--sep);
+      color: var(--text); border-radius: var(--r-sm); padding: 10px; font-size: 14px; cursor: pointer; }
+    .pf-row-input { flex: 1; background: var(--bg); border: 1px solid var(--green); border-radius: 6px;
+      padding: 6px 8px; font-size: 14px; color: var(--text); font-family: inherit; outline: none; box-sizing: border-box; min-width: 0; }
+    .pf-row-confirm-text { flex: 1; font-size: 13px; color: var(--text); line-height: 1.4; }
+    .pf-row-btn-ok { background: var(--green); color: #fff; border: none; }
+    .pf-row-btn-danger { background: #ff3b30; color: #fff; border: none; }
+
+    /* ── フィルターバー ── */
+    .sec-label { font-size: 13px; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.4px; padding: 22px 4px 10px; }
+    .filter-card { background: var(--card); border-radius: var(--r); padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-search {
+      flex: 1 1 200px; background: var(--bg); border: 1.5px solid var(--sep); border-radius: var(--r-sm);
+      padding: 10px 12px; font-size: 14.5px; color: var(--text); outline: none;
+    }
+    .filter-search:focus { border-color: var(--green); }
+    .filter-select {
+      flex: 1 1 120px; background: var(--bg); border: 1.5px solid var(--sep); border-radius: var(--r-sm);
+      padding: 10px 10px; font-size: 13.5px; color: var(--text); outline: none;
+    }
+    .filter-stats { font-size: 12px; color: var(--text-2); padding: 10px 2px 0; }
+
+    /* ── 統計サマリー ── */
+    .stats-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+    .stat-box { flex: 1; min-width: 100px; background: var(--card); border-radius: var(--r); padding: 14px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .stat-num { font-size: 22px; font-weight: 800; color: var(--green-d); font-variant-numeric: tabular-nums; }
+    .stat-label { font-size: 11.5px; color: var(--text-2); margin-top: 2px; }
+
+    /* ── 精霊グリッド ── */
+    .spirit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-top: 14px; }
+    .spirit-card {
+      background: var(--card); border-radius: var(--r-sm); padding: 10px; text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06); position: relative;
+    }
+    .spirit-card:active { opacity: 0.75; }
+    .spirit-thumb-wrap { width: 100%; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: var(--bg); margin-bottom: 6px; display: flex; align-items: center; justify-content: center; }
+    .spirit-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .spirit-thumb-fallback { font-size: 28px; }
+    .spirit-name { font-size: 12.5px; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.6em; }
+    .spirit-meta { font-size: 10px; color: var(--text-2); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .spirit-progress-bar { height: 4px; border-radius: 2px; background: var(--sep); margin-top: 6px; overflow: hidden; }
+    .spirit-progress-fill { height: 100%; background: var(--green); }
+    .spirit-progress-fill.complete { background: var(--blue); }
+    .spirit-badge {
+      position: absolute; top: 6px; left: 6px; font-size: 9px; font-weight: 700; padding: 2px 6px;
+      border-radius: 999px; background: rgba(0,0,0,0.55); color: #fff;
+    }
+    .spirit-revisit-badge {
+      position: absolute; top: 6px; right: 6px; font-size: 12px;
+    }
+    .empty-note { text-align: center; color: var(--text-2); font-size: 13px; padding: 30px 0; }
+
+    /* ── 精霊詳細モーダル ── */
+    .detail-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 800; align-items: flex-start; justify-content: center; padding: 0; overflow-y: auto; }
+    .detail-overlay.open { display: flex; }
+    .detail-card { width: 100%; max-width: 560px; min-height: 100vh; background: var(--bg); box-sizing: border-box; }
+    @media (min-width: 620px) { .detail-card { min-height: 0; margin: 30px auto; border-radius: var(--r); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); } }
+    .detail-head { background: var(--card); padding: 16px; display: flex; align-items: center; gap: 12px; border-bottom: 0.5px solid var(--sep); position: sticky; top: 0; z-index: 2; }
+    .detail-thumb { width: 56px; height: 56px; border-radius: 14px; overflow: hidden; background: var(--bg); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 26px; }
+    .detail-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .detail-title { font-size: 16px; font-weight: 700; }
+    .detail-sub { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+    .detail-close { margin-left: auto; font-size: 22px; color: var(--text-2); flex-shrink: 0; padding: 4px; }
+    .detail-body { padding: 14px 16px 30px; }
+    .detail-summary { background: var(--card); border-radius: var(--r); padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 14px; font-size: 12.5px; color: var(--text-2); display: flex; flex-wrap: wrap; gap: 10px 18px; }
+    .detail-summary b { color: var(--text); }
+    .tier-label { font-size: 12px; font-weight: 700; color: var(--text-2); padding: 12px 2px 6px; }
+    .node-row {
+      display: flex; align-items: center; gap: 10px; background: var(--card); border-radius: var(--r-sm);
+      padding: 10px 12px; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .node-check { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--sep); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: transparent; }
+    .node-row.checked .node-check { background: var(--green); border-color: var(--green); color: #fff; }
+    .node-icon { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
+    .node-info { flex: 1; min-width: 0; }
+    .node-name { font-size: 13.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .node-name.no-ja { color: var(--text-2); font-style: italic; }
+    .node-costs { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+    .cost-chip { font-size: 10.5px; font-weight: 700; padding: 3px 7px; border-radius: 999px; white-space: nowrap; }
+    .cost-c { background: var(--orange-bg); color: #B8740A; }
+    .cost-h { background: rgba(255,45,85,0.10); color: #D6294F; }
+    .cost-sc { background: var(--orange-bg); color: #B8740A; }
+    .cost-sh { background: rgba(255,45,85,0.10); color: #D6294F; }
+    .cost-ac { background: var(--blue-bg); color: var(--blue); }
+    .cost-ec { background: rgba(175,82,222,0.10); color: #8A3FC0; }
+    .wing-badge { font-size: 12px; }
+
+    footer { text-align: center; font-size: 11.5px; color: var(--text-3); padding: 34px 16px 12px; line-height: 1.9; }
+    footer a { color: var(--green-d); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-title">🌳 精霊ツリー管理</div>
+  <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰ ツール</button>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<div class="app-layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-section-label">🔗 関連ツール</div>
+      <button class="sidebar-close-btn" onclick="toggleSidebar()">✕</button>
+    </div>
+    <a href="https://taipak5000.github.io/item/" class="sidebar-nav-link">🗂️ アイテム所持管理</a>
+    <a href="https://taipak5000.github.io/share/" class="sidebar-nav-link">📍 創作物管理ツール</a>
+    <a href="https://taipak5000.github.io/star-candle/" class="sidebar-nav-link">🕯️ 星のキャンドル計算機</a>
+    <a href="https://taipak5000.github.io/companion/" class="sidebar-nav-link">✨ 精霊同行ツール</a>
+    <a href="https://taipak5000.github.io/spirit-catalog/" class="sidebar-nav-link current-tool">🌳 精霊ツリー管理</a>
+    <a href="https://taipak5000.github.io/wings/" class="sidebar-nav-link">🪽 羽トラッカー</a>
+    <a href="https://taipak5000.github.io/emote/" class="sidebar-nav-link">🎭 エモート所持率管理</a>
+  </aside>
+
+  <div class="wrap">
+    <div class="pf-bar" id="pfBar" onclick="pfOpenModal()"></div>
+
+    <p class="sec-label">🔍 検索・絞り込み</p>
+    <div class="filter-card">
+      <div class="filter-row">
+        <input type="search" class="filter-search" id="searchInput" placeholder="精霊名で検索…" oninput="renderGrid()">
+        <select class="filter-select" id="typeFilter" onchange="renderGrid()">
+          <option value="all">すべての種別</option>
+          <option value="Season">季節精霊</option>
+          <option value="Regular">恒常精霊</option>
+          <option value="Elder">長老</option>
+          <option value="Guide">季節ガイド</option>
+          <option value="Special">特殊</option>
+        </select>
+        <select class="filter-select" id="seasonFilter" onchange="renderGrid()">
+          <option value="all">すべてのシーズン</option>
+        </select>
+        <select class="filter-select" id="progressFilter" onchange="renderGrid()">
+          <option value="all">すべての進捗</option>
+          <option value="incomplete">未完了のみ</option>
+          <option value="complete">完了済みのみ</option>
+          <option value="untouched">未着手のみ</option>
+        </select>
+      </div>
+      <div class="filter-stats" id="filterStats"></div>
+    </div>
+
+    <div class="stats-row" id="statsRow"></div>
+
+    <p class="sec-label">✨ 精霊一覧</p>
+    <div class="spirit-grid" id="spiritGrid"></div>
+  </div>
+</div>
+
+<div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this) closeDetail()">
+  <div class="detail-card" id="detailCard"></div>
+</div>
+
+<footer>
+  このサイトはSky 星を紡ぐ子どもたちの非公式ファンサイトです。thatgamecompanyは一切関与していません。<br>
+  作成・ご意見: <a href="https://x.com/Skyzztai" target="_blank" rel="noopener noreferrer">@Skyzztai</a>　／
+  <a href="https://odaibako.net/u/Skyzztai" target="_blank" rel="noopener noreferrer">リクエストフォーム</a>
+</footer>
+
+<script src="spirit-tree-data.js"></script>
+<script>
+/* ================================================================
+   サイドバー開閉
+   ================================================================ */
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('sidebar-open');
+  document.getElementById('sidebarOverlay').classList.toggle('show');
+}
+
+/* ================================================================
+   複数プロフィール（保存枠）管理
+   item・wings 等と同じ skyProfiles_v1 / skyActiveProfile_v1 を共有する。
+   これにより nsKey() の結果が全サイトで一致し、キャンドル/ハート残高・
+   羽トラッカーとの同期が同じプロフィール単位で行える。
+   ================================================================ */
+const PROFILES_KEY       = 'skyProfiles_v1';
+const ACTIVE_PROFILE_KEY = 'skyActiveProfile_v1';
+const DEFAULT_PROFILE_ID = 'default';
+
+function loadProfiles() {
+  try {
+    const list = JSON.parse(localStorage.getItem(PROFILES_KEY));
+    if (Array.isArray(list) && list.length > 0) return list;
+  } catch (_) {}
+  return null;
+}
+function saveProfiles(list) { localStorage.setItem(PROFILES_KEY, JSON.stringify(list)); }
+function ensureProfilesInit() {
+  let list = loadProfiles();
+  if (!list) {
+    list = [{ id: DEFAULT_PROFILE_ID, name: 'メイン' }];
+    saveProfiles(list);
+  }
+  if (!localStorage.getItem(ACTIVE_PROFILE_KEY)) {
+    localStorage.setItem(ACTIVE_PROFILE_KEY, DEFAULT_PROFILE_ID);
+  }
+  return list;
+}
+function getActiveProfileId() { return localStorage.getItem(ACTIVE_PROFILE_KEY) || DEFAULT_PROFILE_ID; }
+function getActiveProfile() {
+  const list = ensureProfilesInit();
+  return list.find(p => p.id === getActiveProfileId()) || list[0];
+}
+function nsKey(rawKey) {
+  const id = getActiveProfileId();
+  return id === DEFAULT_PROFILE_ID ? rawKey : `${rawKey}__p_${id}`;
+}
+function switchProfile(id) {
+  if (id === getActiveProfileId()) return;
+  localStorage.setItem(ACTIVE_PROFILE_KEY, id);
+  location.reload();
+}
+function createProfile(name) {
+  const trimmed = (name || '').trim();
+  if (!trimmed) return;
+  const list = ensureProfilesInit();
+  const id = 'p_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  list.push({ id, name: trimmed });
+  saveProfiles(list);
+  switchProfile(id);
+}
+function renameProfile(id, name) {
+  const trimmed = (name || '').trim();
+  if (!trimmed) return;
+  const list = ensureProfilesInit();
+  const p = list.find(pr => pr.id === id);
+  if (!p) return;
+  p.name = trimmed;
+  saveProfiles(list);
+  pfRenderModal();
+  pfRenderBar();
+}
+function deleteProfile(id) {
+  const list = ensureProfilesInit();
+  if (list.length <= 1) return;
+  const remaining = list.filter(p => p.id !== id);
+  saveProfiles(remaining);
+  if (getActiveProfileId() === id) {
+    localStorage.setItem(ACTIVE_PROFILE_KEY, remaining[0].id);
+    location.reload();
+    return;
+  }
+  pfRenderModal();
+}
+function escapeHtmlPf(str) {
+  return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+function pfRenderBar() {
+  const bar = document.getElementById('pfBar');
+  if (!bar) return;
+  const profile = getActiveProfile();
+  bar.innerHTML = `🗂️ <b>${escapeHtmlPf(profile.name)}</b> に切替中（タップで切替）`;
+}
+let pfEditingId = null;
+let pfDeletingId = null;
+function pfOpenModal() {
+  pfEditingId = null; pfDeletingId = null;
+  pfRenderModal();
+  document.getElementById('pfModalOverlay').classList.add('open');
+}
+function pfCloseModal() {
+  pfEditingId = null; pfDeletingId = null;
+  document.getElementById('pfModalOverlay').classList.remove('open');
+}
+function pfRenderModal() {
+  const list = ensureProfilesInit();
+  const activeId = getActiveProfileId();
+  const rows = list.map(p => {
+    const isActive = p.id === activeId;
+    if (pfEditingId === p.id) {
+      const nameEsc = escapeHtmlPf(p.name);
+      return `
+        <div class="pf-row" style="flex-wrap: wrap;">
+          <input type="text" class="pf-row-input" id="pfEditInput" value="${nameEsc}" maxlength="30"
+            onkeydown="if(event.key==='Enter') pfConfirmRenameInline('${p.id}'); if(event.key==='Escape') pfCancelRowState();">
+          <button type="button" class="pf-icon-btn pf-row-btn-ok" onclick="pfConfirmRenameInline('${p.id}')">保存</button>
+          <button type="button" class="pf-icon-btn" onclick="pfCancelRowState()">取消</button>
+        </div>`;
+    }
+    if (pfDeletingId === p.id) {
+      return `
+        <div class="pf-row" style="flex-wrap: wrap;">
+          <span class="pf-row-confirm-text">「${escapeHtmlPf(p.name)}」を削除しますか？（一覧からの削除のみで、保存済みデータはブラウザ内に残ります）</span>
+          <button type="button" class="pf-icon-btn pf-row-btn-danger" onclick="pfConfirmDeleteInline('${p.id}')">削除</button>
+          <button type="button" class="pf-icon-btn" onclick="pfCancelRowState()">取消</button>
+        </div>`;
+    }
+    return `
+      <div class="pf-row ${isActive ? 'active' : ''}">
+        <span class="pf-row-name" onclick="switchProfile('${p.id}')">${isActive ? '✅ ' : ''}${escapeHtmlPf(p.name)}</span>
+        <button type="button" class="pf-icon-btn" title="名前を変更" onclick="pfStartRename('${p.id}')">✏️</button>
+        ${list.length > 1 ? `<button type="button" class="pf-icon-btn" title="削除" onclick="pfStartDelete('${p.id}')">🗑️</button>` : ''}
+      </div>`;
+  }).join('');
+  document.getElementById('pfModalBody').innerHTML = `<div>${rows}</div>`;
+  if (pfEditingId !== null) {
+    const input = document.getElementById('pfEditInput');
+    if (input) { input.focus(); input.select(); }
+  }
+}
+function pfAddProfile() {
+  const input = document.getElementById('pfNewName');
+  createProfile(input.value);
+}
+function pfStartRename(id) { pfDeletingId = null; pfEditingId = id; pfRenderModal(); }
+function pfStartDelete(id) { pfEditingId = null; pfDeletingId = id; pfRenderModal(); }
+function pfCancelRowState() { pfEditingId = null; pfDeletingId = null; pfRenderModal(); }
+function pfConfirmRenameInline(id) {
+  const input = document.getElementById('pfEditInput');
+  const next = input ? input.value : '';
+  pfEditingId = null;
+  if (next && next.trim()) { renameProfile(id, next); } else { pfRenderModal(); }
+}
+function pfConfirmDeleteInline(id) { pfDeletingId = null; deleteProfile(id); }
+
+function pfInjectModal() {
+  const overlay = document.createElement('div');
+  overlay.className = 'pf-modal-overlay';
+  overlay.id = 'pfModalOverlay';
+  overlay.onclick = (e) => { if (e.target === overlay) pfCloseModal(); };
+  overlay.innerHTML = `
+    <div class="pf-modal-card">
+      <h3>🗂️ プロフィール（保存枠）</h3>
+      <div id="pfModalBody"></div>
+      <div class="pf-add-row">
+        <input type="text" class="pf-input" id="pfNewName" placeholder="例: サブ垢1" maxlength="30">
+        <button type="button" class="pf-add-btn" onclick="pfAddProfile()">追加</button>
+      </div>
+      <div class="pf-hint">プロフィールを切り替えると、精霊ツリーの解放状況が切り替え先のプロフィールのものに入れ替わります（このブラウザ内にすべて保存されます）。</div>
+      <button type="button" class="pf-close-btn" onclick="pfCloseModal()">閉じる</button>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+/* ================================================================
+   季節名（英語→日本語）対応表。wings 同期・表示用。
+   ================================================================ */
+const SEASON_JA_MAP = {
+  'Season of Gratitude': '感謝の季節', 'Season of Lightseekers': '光の探求者の季節',
+  'Season of Belonging': '想いを編む季節', 'Season of Rhythm': 'リズムが弾ける季節',
+  'Season of Enchantment': '魔法の季節', 'Season of Sanctuary': '楽園の季節',
+  'Season of Prophecy': '預言者の季節', 'Season of Dreams': '夢かなう季節',
+  'Season of Assembly': '大樹に集う季節', 'Season of The Little Prince': '星の王子さまの季節',
+  'Season of Flight': '羽ばたく季節', 'Season of Abyss': '深淵の季節',
+  'Season of Performance': '表現者たちの季節', 'Season of Shattering': '砕ケル闇ノ季節',
+  'Season of AURORA': 'AURORAの季節', 'Season of Remembrance': '追慕の季節',
+  'Season of Passage': 'ならいの季節', 'Season of Moments': '瞬きの季節',
+  'Season of Revival': '復古の季節', 'Season of the Nine-Colored Deer': '九色の鹿の季節',
+  'Season of Nesting': '巣づくりの季節', 'Season of Duets': '重なる音色の季節',
+  'Season of Moomin': 'ムーミンの季節', 'Season of Radiance': '光に染まる季節',
+  'Season of the Blue Bird': '青い鳥の季節', 'Season of The Two Embers - Part 1': 'ふたつの灯火の季節　前編',
+  'Season of Migration': '渡りの季節', 'Season of Lightmending': '光の修繕者の季節',
+  'Season of Carnival': 'カーニバルの季節', 'Dear Van Gogh': 'ゴッホの季節'
+};
+const TYPE_JA = { Season: '季節精霊', Regular: '恒常精霊', Elder: '長老', Guide: '季節ガイド', Special: '特殊', Event: 'イベント' };
+const COST_LABELS = { c: 'キャンドル', h: 'ハート', sc: 'シーズンキャンドル', sh: 'シーズンハート', ac: '昇華キャンドル', ec: 'イベント通貨' };
+const COST_ICON = { c: '🕯️', h: '💗', sc: '🕯️', sh: '💗', ac: '🕯️', ec: '🎫' };
+
+/* ================================================================
+   ノード解放状況の保存（プロフィールごとに名前空間化）
+   ================================================================ */
+const UNLOCK_KEY_RAW = 'spiritCatalogUnlocked_v1';
+function getUnlockedMap() {
+  try { return JSON.parse(localStorage.getItem(nsKey(UNLOCK_KEY_RAW))) || {}; }
+  catch (_) { return {}; }
+}
+function saveUnlockedMap(map) { localStorage.setItem(nsKey(UNLOCK_KEY_RAW), JSON.stringify(map)); }
+function isNodeUnlocked(guid) { return !!getUnlockedMap()[guid]; }
+
+/* ================================================================
+   item（アイテム所持管理）の「所持キャンドル/ハート」と自動同期
+   ================================================================ */
+function adjustOwnCurrency(deltaCandle, deltaHeart) {
+  if (!deltaCandle && !deltaHeart) return;
+  const key = nsKey('wishOwnCurrency');
+  let cur;
+  try { cur = JSON.parse(localStorage.getItem(key)) || { candle: 0, heart: 0 }; }
+  catch (_) { cur = { candle: 0, heart: 0 }; }
+  cur.candle = Math.max(0, (cur.candle || 0) + (deltaCandle || 0));
+  cur.heart  = Math.max(0, (cur.heart  || 0) + (deltaHeart  || 0));
+  localStorage.setItem(key, JSON.stringify(cur));
+}
+
+/* ================================================================
+   wings（羽トラッカー）と自動同期（Wing Buff ノードのみ）
+   ================================================================ */
+function syncWingBuff(spirit) {
+  if (!spirit.nameJa) return;
+  const wingBuffNodes = spirit.nodes.filter(n => n.itemType === 'WingBuff');
+  if (wingBuffNodes.length === 0) return;
+
+  if (spirit.type === 'Season') {
+    const seasonJa = spirit.season ? SEASON_JA_MAP[spirit.season] : null;
+    if (!seasonJa) return;
+    const key = nsKey('wingTracker_v1');
+    let tracker;
+    try { tracker = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) { tracker = {}; }
+    if (!tracker[seasonJa]) tracker[seasonJa] = {};
+    const anyChecked = wingBuffNodes.some(n => isNodeUnlocked(n.guid));
+    tracker[seasonJa][spirit.nameJa] = anyChecked;
+    localStorage.setItem(key, JSON.stringify(tracker));
+  } else if (spirit.type === 'Regular') {
+    const key = nsKey('permWingTracker_v1');
+    let tracker;
+    try { tracker = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) { tracker = {}; }
+    const entry = {};
+    wingBuffNodes.forEach((n, idx) => {
+      const tierKey = idx === 0 ? 'tier1' : 'tier2';
+      if (isNodeUnlocked(n.guid)) entry[tierKey] = true;
+    });
+    tracker[spirit.nameJa] = entry;
+    localStorage.setItem(key, JSON.stringify(tracker));
+  }
+}
+
+/* ================================================================
+   ノードの解放／解除トグル（同期処理込み）
+   ================================================================ */
+function toggleNode(spiritGuid, nodeGuid) {
+  const spirit = spiritByGuid[spiritGuid];
+  if (!spirit) return;
+  const node = spirit.nodes.find(n => n.guid === nodeGuid);
+  if (!node) return;
+
+  const unlocked = getUnlockedMap();
+  const wasUnlocked = !!unlocked[nodeGuid];
+  const nowUnlocked = !wasUnlocked;
+  if (nowUnlocked) { unlocked[nodeGuid] = true; } else { delete unlocked[nodeGuid]; }
+  saveUnlockedMap(unlocked);
+
+  // 解放でコスト分を消費、解除で払い戻す（キャンドル・ハートのみitemと同期）
+  const sign = nowUnlocked ? -1 : 1;
+  const cost = node.cost || {};
+  adjustOwnCurrency(sign * (cost.c || 0), sign * (cost.h || 0));
+
+  // 羽バフノードならwingsとも同期
+  if (node.itemType === 'WingBuff') syncWingBuff(spirit);
+
+  renderDetail(spiritGuid);
+  renderGrid();
+}
+
+/* ================================================================
+   精霊データの前処理
+   ================================================================ */
+const spiritByGuid = {};
+SPIRIT_TREE_DATA.forEach(s => { spiritByGuid[s.guid] = s; });
+
+function spiritProgress(spirit) {
+  const unlocked = getUnlockedMap();
+  const total = spirit.nodes.length;
+  const done = spirit.nodes.filter(n => unlocked[n.guid]).length;
+  return { done, total };
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+/* ================================================================
+   フィルター用シーズンリストを構築
+   ================================================================ */
+function initSeasonFilter() {
+  const seasons = [...new Set(SPIRIT_TREE_DATA.filter(s => s.season).map(s => s.season))];
+  const sel = document.getElementById('seasonFilter');
+  seasons.forEach(en => {
+    const opt = document.createElement('option');
+    opt.value = en;
+    opt.textContent = SEASON_JA_MAP[en] || en;
+    sel.appendChild(opt);
+  });
+}
+
+/* ================================================================
+   精霊グリッドの描画
+   ================================================================ */
+function renderGrid() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const typeF = document.getElementById('typeFilter').value;
+  const seasonF = document.getElementById('seasonFilter').value;
+  const progressF = document.getElementById('progressFilter').value;
+
+  const filtered = SPIRIT_TREE_DATA.filter(s => {
+    if (typeF !== 'all' && s.type !== typeF) return false;
+    if (seasonF !== 'all' && s.season !== seasonF) return false;
+    if (q) {
+      const nameJa = (s.nameJa || '').toLowerCase();
+      const nameEn = s.name.toLowerCase();
+      if (!nameJa.includes(q) && !nameEn.includes(q)) return false;
+    }
+    if (progressF !== 'all') {
+      const { done, total } = spiritProgress(s);
+      if (progressF === 'complete' && done !== total) return false;
+      if (progressF === 'incomplete' && done === total) return false;
+      if (progressF === 'untouched' && done !== 0) return false;
+    }
+    return true;
+  });
+
+  document.getElementById('filterStats').textContent = `${filtered.length} / ${SPIRIT_TREE_DATA.length} 件を表示`;
+
+  const grid = document.getElementById('spiritGrid');
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty-note">条件に一致する精霊が見つかりません</div>';
+  } else {
+    grid.innerHTML = filtered.map(s => {
+      const { done, total } = spiritProgress(s);
+      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+      const name = s.nameJa || s.name;
+      const thumb = s.imageUrl
+        ? `<img src="${s.imageUrl}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<span class=&quot;spirit-thumb-fallback&quot;>✨</span>'">`
+        : `<span class="spirit-thumb-fallback">✨</span>`;
+      return `
+        <div class="spirit-card" onclick="openDetail('${s.guid}')">
+          <span class="spirit-badge">${TYPE_JA[s.type] || s.type}</span>
+          ${s.treeSource === 'revisit' ? '<span class="spirit-revisit-badge" title="再訪ツリー">🔁</span>' : ''}
+          <div class="spirit-thumb-wrap">${thumb}</div>
+          <div class="spirit-name">${escapeHtml(name)}</div>
+          <div class="spirit-meta">${s.season ? escapeHtml(SEASON_JA_MAP[s.season] || s.season) : ''}</div>
+          <div class="spirit-progress-bar"><div class="spirit-progress-fill ${done === total ? 'complete' : ''}" style="width:${pct}%"></div></div>
+        </div>`;
+    }).join('');
+  }
+
+  renderStats();
+}
+
+function renderStats() {
+  const unlocked = getUnlockedMap();
+  let totalNodes = 0, doneNodes = 0, completeSpirits = 0;
+  let candleSpent = 0, heartSpent = 0;
+  SPIRIT_TREE_DATA.forEach(s => {
+    let spiritDone = 0;
+    s.nodes.forEach(n => {
+      totalNodes++;
+      if (unlocked[n.guid]) {
+        doneNodes++; spiritDone++;
+        if (n.cost) { candleSpent += (n.cost.c || 0); heartSpent += (n.cost.h || 0); }
+      }
+    });
+    if (spiritDone === s.nodes.length && s.nodes.length > 0) completeSpirits++;
+  });
+  document.getElementById('statsRow').innerHTML = `
+    <div class="stat-box"><div class="stat-num">${doneNodes} / ${totalNodes}</div><div class="stat-label">解放済みノード</div></div>
+    <div class="stat-box"><div class="stat-num">${completeSpirits} / ${SPIRIT_TREE_DATA.length}</div><div class="stat-label">コンプリート済み精霊</div></div>
+    <div class="stat-box"><div class="stat-num">🕯️${candleSpent} 💗${heartSpent}</div><div class="stat-label">このツリーで使用したキャンドル/ハート</div></div>
+  `;
+}
+
+/* ================================================================
+   精霊詳細（ツリー）モーダル
+   ================================================================ */
+let currentDetailGuid = null;
+
+function openDetail(guid) {
+  currentDetailGuid = guid;
+  renderDetail(guid);
+  document.getElementById('detailOverlay').classList.add('open');
+}
+function closeDetail() {
+  document.getElementById('detailOverlay').classList.remove('open');
+  currentDetailGuid = null;
+}
+
+function nodeRowHtml(spiritGuid, n) {
+  const unlocked = isNodeUnlocked(n.guid);
+  const name = n.itemNameJa || n.itemName || '（アイテム不明）';
+  const noJa = !n.itemNameJa;
+  const costChips = Object.keys(n.cost || {}).map(k =>
+    `<span class="cost-chip cost-${k}">${COST_ICON[k] || ''}${n.cost[k]}</span>`
+  ).join('');
+  const wingBadge = n.itemType === 'WingBuff' ? '<span class="wing-badge" title="羽トラッカーと同期されます">🪽</span>' : '';
+  return `
+    <div class="node-row ${unlocked ? 'checked' : ''}" onclick="toggleNode('${spiritGuid}','${n.guid}')">
+      <div class="node-check">${unlocked ? '✓' : ''}</div>
+      <div class="node-info">
+        <div class="node-name ${noJa ? 'no-ja' : ''}">${escapeHtml(name)} ${wingBadge}</div>
+      </div>
+      <div class="node-costs">${costChips || '<span class="cost-chip" style="background:var(--sep);color:var(--text-2)">無料</span>'}</div>
+    </div>`;
+}
+
+function renderDetail(guid) {
+  const s = spiritByGuid[guid];
+  if (!s) return;
+  const { done, total } = spiritProgress(s);
+  const name = s.nameJa || s.name;
+  const thumb = s.imageUrl
+    ? `<img src="${s.imageUrl}" alt="" onerror="this.parentElement.innerHTML='✨'">`
+    : '✨';
+
+  let bodyHtml = '';
+  if (s.isTiered) {
+    const byTier = {};
+    s.nodes.forEach(n => { (byTier[n.tier] ??= []).push(n); });
+    const tierKeys = Object.keys(byTier).map(Number).sort((a,b) => a-b);
+    bodyHtml = tierKeys.map(t => `
+      <div class="tier-label">段 ${t + 1}</div>
+      ${byTier[t].map(n => nodeRowHtml(guid, n)).join('')}
+    `).join('');
+  } else {
+    bodyHtml = s.nodes.map(n => nodeRowHtml(guid, n)).join('');
+  }
+
+  const revisitNote = s.treeSource === 'revisit'
+    ? `<span>🔁 再訪ツリー(${escapeHtml(s.revisitName || '')} / ${escapeHtml(s.revisitDate || '')})</span>`
+    : '';
+
+  document.getElementById('detailCard').innerHTML = `
+    <div class="detail-head">
+      <div class="detail-thumb">${thumb}</div>
+      <div>
+        <div class="detail-title">${escapeHtml(name)}</div>
+        <div class="detail-sub">${TYPE_JA[s.type] || s.type}${s.season ? ' ・ ' + escapeHtml(SEASON_JA_MAP[s.season] || s.season) : ''}</div>
+      </div>
+      <button class="detail-close" onclick="closeDetail()">✕</button>
+    </div>
+    <div class="detail-body">
+      <div class="detail-summary">
+        <span>進捗: <b>${done} / ${total}</b></span>
+        ${revisitNote}
+      </div>
+      ${bodyHtml}
+    </div>
+  `;
+}
+
+/* ================================================================
+   初期化
+   ================================================================ */
+pfInjectModal();
+pfRenderBar();
+initSeasonFilter();
+renderGrid();
+</script>
+</body>
+</html>
