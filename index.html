@@ -699,11 +699,12 @@ function toggleNode(spiritGuid, nodeGuid) {
 
 /* ================================================================
    精霊データの前処理
-   一覧の並び順を「季節の実装順」にする: シーズン無し(恒常/長老/特殊、
-   基本ゲーム発売時から存在)を先頭に、以降はSEASON_JA_MAPのキー順
-   (=季節の実装順)→季節内ではseasonOrderIndex(案内人が0、以降精霊の
-   登場順)で並べる。恒常精霊はさらにリアルム順(孤島→草原→雨林→峡谷→
-   捨てられた地→書庫)で並べる。
+   一覧の並び順: ①案内人(季節ガイド、季節の実装順) → ②特殊 → ③長老 →
+   ④恒常精霊(リアルム順: 孤島→草原→雨林→峡谷→捨てられた地→書庫) →
+   ⑤季節精霊(季節の実装順→季節内はseasonOrderIndex)。
+   案内人は元々「季節精霊の中で各季節の先頭」という位置づけだったが、
+   恒常精霊より上に表示したいという要望のため、季節精霊とは別グループ
+   として先頭側にまとめている。
    ================================================================ */
 const REALM_ORDER = ['Isle of Dawn', 'Daylight Prairie', 'Hidden Forest', 'Valley of Triumph', 'Golden Wasteland', 'Vault of Knowledge'];
 const AREA_TO_REALM = {
@@ -717,33 +718,34 @@ const AREA_TO_REALM = {
   'Vault Rest': 'Vault of Knowledge', 'Upper Vault': 'Vault of Knowledge',
   'Lower Vault': 'Vault of Knowledge', 'Vault Second Floor': 'Vault of Knowledge'
 };
+const TYPE_GROUP_ORDER = { Guide: 0, Special: 1, Elder: 2, Regular: 3, Season: 4 };
 function sortSpiritsBySeasonOrder() {
   const seasonOrder = {};
   Object.keys(SEASON_JA_MAP).forEach((k, i) => { seasonOrder[k] = i; });
   const realmOrder = {};
   REALM_ORDER.forEach((r, i) => { realmOrder[r] = i; });
-  const noSeasonTypeOrder = { Special: 0, Elder: 1, Regular: 2 };
 
   SPIRIT_TREE_DATA.sort((a, b) => {
-    const aHasSeason = a.season ? 1 : 0;
-    const bHasSeason = b.season ? 1 : 0;
-    if (aHasSeason !== bHasSeason) return aHasSeason - bHasSeason;
-    if (!aHasSeason) {
-      const aType = noSeasonTypeOrder[a.type] ?? 9;
-      const bType = noSeasonTypeOrder[b.type] ?? 9;
-      if (aType !== bType) return aType - bType;
-      if (a.type === 'Regular' && b.type === 'Regular') {
-        const aRealm = realmOrder[AREA_TO_REALM[a.area]] ?? 999;
-        const bRealm = realmOrder[AREA_TO_REALM[b.area]] ?? 999;
-        if (aRealm !== bRealm) return aRealm - bRealm;
-        if (a.area !== b.area) return (a.area || '').localeCompare(b.area || '', 'en');
-      }
+    const aGroup = TYPE_GROUP_ORDER[a.type] ?? 9;
+    const bGroup = TYPE_GROUP_ORDER[b.type] ?? 9;
+    if (aGroup !== bGroup) return aGroup - bGroup;
+
+    if (a.type === 'Regular') {
+      const aRealm = realmOrder[AREA_TO_REALM[a.area]] ?? 999;
+      const bRealm = realmOrder[AREA_TO_REALM[b.area]] ?? 999;
+      if (aRealm !== bRealm) return aRealm - bRealm;
+      if (a.area !== b.area) return (a.area || '').localeCompare(b.area || '', 'en');
       return (a.nameJa || a.name).localeCompare(b.nameJa || b.name, 'ja');
     }
-    const aIdx = seasonOrder[a.season] ?? 999;
-    const bIdx = seasonOrder[b.season] ?? 999;
-    if (aIdx !== bIdx) return aIdx - bIdx;
-    return (a.seasonOrderIndex ?? 0) - (b.seasonOrderIndex ?? 0);
+
+    if (a.type === 'Guide' || a.type === 'Season') {
+      const aIdx = seasonOrder[a.season] ?? 999;
+      const bIdx = seasonOrder[b.season] ?? 999;
+      if (aIdx !== bIdx) return aIdx - bIdx;
+      return (a.seasonOrderIndex ?? 0) - (b.seasonOrderIndex ?? 0);
+    }
+
+    return (a.nameJa || a.name).localeCompare(b.nameJa || b.name, 'ja');
   });
 }
 sortSpiritsBySeasonOrder();
