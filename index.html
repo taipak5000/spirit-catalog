@@ -878,12 +878,19 @@ const NODE_TYPE_ICON = {
   Necklace: '📿', Outfit: '👗', OutfitShoes: '👗', Prop: '🪴', Quest: '📜', Shoes: '👟',
   Special: '⭐', Spell: '🔮', Stance: '🧎', WingBuff: '🪽'
 };
+// itemTypeだけでは判別できない汎用報酬（Special型など）向けの、
+// アイテム名に基づくアイコン上書き。「ハート」がSpecial型の汎用⭐に
+// 埋もれて紛らわしいとの指摘のため、名前がハート系の場合は💗を優先する。
+const NODE_NAME_ICON_OVERRIDE = {
+  'ハート': '💗',
+  'シーズンハート': '💗',
+};
 
 function treeNodeHtml(spiritGuid, n, style) {
   const unlocked = isNodeUnlocked(n.guid);
   const name = n.itemNameJa || n.itemName || '（アイテム不明）';
   const noJa = !n.itemNameJa;
-  const icon = NODE_TYPE_ICON[n.itemType] || '✨';
+  const icon = NODE_NAME_ICON_OVERRIDE[n.itemNameJa] || NODE_TYPE_ICON[n.itemType] || '✨';
   const costChips = Object.keys(n.cost || {}).map(k =>
     `<span class="cost-chip cost-${k}">${COST_ICON[k] || ''}${n.cost[k]}</span>`
   ).join('');
