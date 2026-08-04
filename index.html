@@ -982,7 +982,8 @@ function renderTreeDiagram(spiritGuid, s) {
 function renderTieredTree(spiritGuid, s) {
   const byTier = {};
   s.nodes.forEach(n => { (byTier[n.tier] ??= []).push(n); });
-  const tierKeys = Object.keys(byTier).map(Number).sort((a, b) => a - b);
+  // 本家のツリーと同じく段1が一番下・上に向かって段数が増えるように、降順で並べる
+  const tierKeys = Object.keys(byTier).map(Number).sort((a, b) => b - a);
   return tierKeys.map(t => {
     const byRow = {};
     byTier[t].forEach(n => { (byRow[n.row] ??= []).push(n); });
