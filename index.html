@@ -977,11 +977,110 @@ const NODE_NAME_ICON_OVERRIDE = {
   'シーズンハート': '💗',
 };
 
+/* ================================================================
+   🖼️ ツリーノードの実機画像（Sky Wikiホットリンク）
+   spirit-tree-data.js（SkyGame-Dataからの自動抽出データ、手を加えない）の
+   各ノードには、既に以下の直接参照フィールドが入っている:
+   ・emoteId       … emote/index.html の EMOTES_DATA の id と完全一致
+   ・itemCatKey +
+     itemCostId    … item の各カテゴリページ（cape.html等）の ITEMS_DATA の
+                     id と完全一致（itemCatKeyの値はitemの12カテゴリキーと一致）
+   これらを使って、item/emoteが既に持っているWiki画像URLをそのまま再利用する。
+   本家アイコンを新たに探す必要があるのは、この直接参照が無いノードだけ。
+   ================================================================ */
+const SPIRIT_SITE_ROOT = location.origin;
+const ITEM_CATS_FOR_TREE = [
+  { key: 'cape',           file: 'cape.html' },
+  { key: 'mask',           file: 'mask.html' },
+  { key: 'necklace',       file: 'necklace.html' },
+  { key: 'hairstyle',      file: 'hairstyle.html' },
+  { key: 'hair_accessory', file: 'hair_accessory.html' },
+  { key: 'head_accessory', file: 'head_accessory.html' },
+  { key: 'outfit',         file: 'outfit.html' },
+  { key: 'shoes',          file: 'shoes.html' },
+  { key: 'face_accessory', file: 'face_accessory.html' },
+  { key: 'portable_item',  file: 'portable_item.html' },
+  { key: 'large_placeable',file: 'large_placeable.html' },
+  { key: 'small_placeable',file: 'small_placeable.html' },
+];
+
+// HTMLに埋め込まれた `const 変数名 = [...]` 配列を安全に取り出す（profiles.js の srchExtractArray と同じ考え方）
+function treeExtractArray(html, varName) {
+  const m = html.match(new RegExp('const ' + varName + '\\s*=\\s*(\\[[\\s\\S]*?\\n\\]);'));
+  if (!m) return null;
+  try { return new Function('return ' + m[1] + ';')(); } catch (e) { console.error(varName, e); return null; }
+}
+
+let itemImgMapByCat = null;
+let itemImgMapLoading = null;
+function loadItemImgMapForTree() {
+  if (itemImgMapByCat) return Promise.resolve(itemImgMapByCat);
+  if (itemImgMapLoading) return itemImgMapLoading;
+  itemImgMapLoading = Promise.all(ITEM_CATS_FOR_TREE.map(async cat => {
+    try {
+      const res = await fetch(`${SPIRIT_SITE_ROOT}/tai-item/${cat.file}`);
+      const html = await res.text();
+      const data = treeExtractArray(html, 'ITEMS_DATA') || [];
+      return [cat.key, Object.fromEntries(data.filter(it => it.img).map(it => [it.id, it.img]))];
+    } catch (e) { console.error('tree item map', cat.key, e); return [cat.key, {}]; }
+  })).then(entries => {
+    itemImgMapByCat = Object.fromEntries(entries);
+    itemImgMapLoading = null;
+    return itemImgMapByCat;
+  });
+  return itemImgMapLoading;
+}
+
+let emoteImgMap = null;
+let emoteImgMapLoading = null;
+function loadEmoteImgMapForTree() {
+  if (emoteImgMap) return Promise.resolve(emoteImgMap);
+  if (emoteImgMapLoading) return emoteImgMapLoading;
+  emoteImgMapLoading = (async () => {
+    try {
+      const res = await fetch(`${SPIRIT_SITE_ROOT}/tai-emote/index.html`);
+      const html = await res.text();
+      const data = treeExtractArray(html, 'EMOTES_DATA') || [];
+      emoteImgMap = Object.fromEntries(data.filter(e => e.img).map(e => [e.id, e.img]));
+    } catch (e) { console.error('tree emote map', e); emoteImgMap = {}; }
+    emoteImgMapLoading = null;
+    return emoteImgMap;
+  })();
+  return emoteImgMapLoading;
+}
+
+// Stage 2で、精霊によらず見た目が同じ汎用報酬（Heart/Blessing各種/染料等）の
+// 実機アイコンをitemNameJaキーでここに追加していく。
+const GENERIC_ITEM_IMG = {};
+
+// ノードに対応する実機画像URLを解決する（優先順: item直接参照 → emote直接参照 → 汎用報酬辞書 → 無ければnull＝絵文字のまま）
+function resolveNodeImg(n) {
+  if (n.itemCatKey && n.itemCostId && itemImgMapByCat) {
+    const img = itemImgMapByCat[n.itemCatKey]?.[n.itemCostId];
+    if (img) return img;
+  }
+  if (n.emoteId && emoteImgMap) {
+    const img = emoteImgMap[n.emoteId];
+    if (img) return img;
+  }
+  if (n.itemNameJa && GENERIC_ITEM_IMG[n.itemNameJa]) return GENERIC_ITEM_IMG[n.itemNameJa];
+  return null;
+}
+
+// item/emoteの画像マップを読み込み、完了したら現在開いている詳細画面があれば再描画する
+Promise.all([loadItemImgMapForTree(), loadEmoteImgMapForTree()]).then(() => {
+  if (currentDetailGuid) renderDetail(currentDetailGuid);
+});
+
 function treeNodeHtml(spiritGuid, n, style) {
   const unlocked = isNodeUnlocked(n.guid);
   const name = n.itemNameJa || n.itemName || '（アイテム不明）';
   const noJa = !n.itemNameJa;
   const icon = NODE_NAME_ICON_OVERRIDE[n.itemNameJa] || NODE_TYPE_ICON[n.itemType] || '✨';
+  const nodeImg = resolveNodeImg(n);
+  const iconHtml = nodeImg
+    ? `<img src="${nodeImg}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${icon}'}))">`
+    : icon;
   const costChips = Object.keys(n.cost || {}).map(k =>
     `<span class="cost-chip cost-${k}">${COST_ICON[k] || ''}${n.cost[k]}</span>`
   ).join('');
@@ -992,7 +1091,7 @@ function treeNodeHtml(spiritGuid, n, style) {
     <div class="tree-node-wrap" style="${style || ''}">
       <div class="tree-node-circle-holder">
         <button type="button" class="tree-node ${unlocked ? 'checked' : ''}" onclick="toggleNode('${spiritGuid}','${n.guid}')" title="${escapeHtml(name)}">
-          <span class="tree-node-icon">${unlocked ? '✓' : icon}</span>
+          <span class="tree-node-icon">${unlocked ? '✓' : iconHtml}</span>
         </button>
         ${wingTag}${emoteTag}
       </div>
